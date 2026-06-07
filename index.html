@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE GREAT WAR — Submit Propaganda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c96d;
+      --blood: #8b1a1a;
+      --dark: #080608;
+      --surface: rgba(12, 8, 12, 0.85);
+      --border: rgba(201, 168, 76, 0.2);
+      --text: #d4c5a9;
+      --text-dim: rgba(212, 197, 169, 0.5);
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Crimson Text', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Blob background */
+    .blob-container {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 45% 55% 52% 48% / 48% 45% 55% 52%;
+      filter: blur(80px);
+      opacity: 0.25;
+      mix-blend-mode: screen;
+    }
+
+    .blob1 {
+      width: 500px; height: 500px;
+      background: linear-gradient(135deg, #8b1a1a, #c9392b);
+      top: -10%; left: -5%;
+      animation: float1 22s infinite ease-in-out;
+    }
+
+    .blob2 {
+      width: 420px; height: 420px;
+      background: linear-gradient(135deg, #c9a84c, #8b6914);
+      top: 40%; right: -8%;
+      animation: float2 26s infinite ease-in-out;
+    }
+
+    .blob3 {
+      width: 460px; height: 460px;
+      background: linear-gradient(135deg, #2c1a4a, #6b21a8);
+      bottom: -10%; left: 35%;
+      animation: float3 30s infinite ease-in-out;
+    }
+
+    .blob4 {
+      width: 300px; height: 300px;
+      background: linear-gradient(135deg, #1a3a1a, #166534);
+      top: 20%; left: 30%;
+      animation: float1 18s infinite ease-in-out reverse;
+      opacity: 0.15;
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); }
+      33% { transform: translate(60px,-70px) scale(1.12) rotate(120deg); }
+      66% { transform: translate(-50px,50px) scale(0.9) rotate(240deg); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); }
+      33% { transform: translate(-70px,60px) scale(0.95) rotate(120deg); }
+      66% { transform: translate(50px,-60px) scale(1.1) rotate(240deg); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); }
+      33% { transform: translate(70px,40px) scale(1.08) rotate(120deg); }
+      66% { transform: translate(-60px,-60px) scale(0.93) rotate(240deg); }
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* Layout */
+    .page {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 56px;
+      animation: gentleFloat 7s ease-in-out infinite;
+    }
+
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 6vw, 48px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      text-shadow: 0 0 40px rgba(201,168,76,0.3);
+    }
+
+    .title span {
+      color: var(--gold);
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-style: italic;
+      color: var(--text-dim);
+      margin-top: 12px;
+    }
+
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 24px auto 0;
+    }
+
+    /* Caine quote */
+    .caine-quote {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(20px);
+      border-radius: 2px;
+      animation: gentleFloat 8s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+
+    .caine-quote p {
+      font-style: italic;
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .caine-quote .speaker {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-top: 10px;
+      display: block;
+      opacity: 0.7;
+    }
+
+    /* Form */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      border-radius: 4px;
+      padding: 40px;
+      animation: gentleFloat 9s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .form-section {
+      margin-bottom: 32px;
+    }
+
+    .form-section:last-of-type { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    label .required {
+      color: var(--blood);
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Crimson Text', serif;
+      font-size: 17px;
+      padding: 12px 16px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 0 0 1px rgba(201,168,76,0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    input[type="text"]::placeholder,
+    textarea::placeholder {
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* Army selector */
+    .army-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .army-option {
+      position: relative;
+    }
+
+    .army-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .army-option label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+    }
+
+    .army-option label .emoji {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .army-option input:checked + label {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      box-shadow: 0 0 20px rgba(201,168,76,0.1);
+    }
+
+    .army-option label:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.04);
+    }
+
+    /* File upload */
+    .file-upload {
+      position: relative;
+    }
+
+    .file-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .file-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 32px;
+      border: 1px dashed rgba(201,168,76,0.3);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: rgba(255,255,255,0.02);
+      min-height: 120px;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .file-label:hover {
+      border-color: rgba(201,168,76,0.6);
+      background: rgba(201,168,76,0.04);
+    }
+
+    .file-label .upload-icon {
+      font-size: 32px;
+      opacity: 0.5;
+    }
+
+    .file-label.has-file {
+      border-color: rgba(201,168,76,0.5);
+      color: var(--gold);
+    }
+
+    /* Preview */
+    #preview-container {
+      display: none;
+      margin-top: 12px;
+    }
+
+    #preview-container img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    /* Submit button */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #8b1a1a, #c9392b);
+      border: none;
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+      margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+      animation: gentleFloat 6s ease-in-out infinite;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #c9392b, #e05a3a);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .submit-btn:hover::before { opacity: 1; }
+    .submit-btn:hover { box-shadow: 0 0 30px rgba(201,57,43,0.4); }
+
+    .submit-btn span { position: relative; z-index: 1; }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Status messages */
+    .status {
+      margin-top: 20px;
+      padding: 16px 20px;
+      border-radius: 2px;
+      font-size: 16px;
+      text-align: center;
+      display: none;
+    }
+
+    .status.success {
+      background: rgba(22,101,52,0.2);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #86efac;
+      display: block;
+    }
+
+    .status.error {
+      background: rgba(139,26,26,0.2);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+      display: block;
+    }
+
+    /* Score reference */
+    .score-card {
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      border-radius: 4px;
+      padding: 32px 40px;
+      animation: gentleFloat 10s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+
+    .score-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      gap: 16px;
+    }
+
+    .score-row:last-child { border-bottom: none; }
+
+    .score-name {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .score-desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      font-style: italic;
+      flex: 1;
+      padding: 0 16px;
+    }
+
+    .score-pts {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob-container">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+  </div>
+
+  <div class="page">
+
+    <header class="header">
+      <p class="eyebrow">The Amazing Digital Circus</p>
+      <h1 class="title">THE GREAT <span>WAR</span></h1>
+      <p class="subtitle">Submit your propaganda</p>
+      <div class="divider"></div>
+    </header>
+
+    <div class="caine-quote">
+      <p>"oh, now THIS is what i like to see. the circus is watching. vote accordingly."</p>
+      <span class="speaker">— CAINE</span>
+    </div>
+
+    <form class="form-card" id="propaganda-form">
+
+      <div class="form-section">
+        <label>Your Army <span class="required">*</span></label>
+        <div class="army-selector">
+          <div class="army-option">
+            <input type="radio" name="army" id="rat" value="rat" required>
+            <label for="rat">
+              <span class="emoji">🐀</span>
+              Rat Army
+            </label>
+          </div>
+          <div class="army-option">
+            <input type="radio" name="army" id="cat" value="cat" required>
+            <label for="cat">
+              <span class="emoji">🐱</span>
+              Cat Army
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label for="username">Discord Username <span class="required">*</span></label>
+        <input type="text" id="username" name="discord_username" placeholder="your discord username" required>
+      </div>
+
+      <div class="form-section">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="give your piece a name">
+      </div>
+
+      <div class="form-section">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="what does your propaganda say? what does it mean?"></textarea>
+      </div>
+
+      <div class="form-section">
+        <label>Propaganda Image <span class="required">*</span></label>
+        <div class="file-upload">
+          <input type="file" id="image" class="file-input" accept="image/*" required>
+          <label for="image" class="file-label" id="file-label">
+            <span class="upload-icon">🎨</span>
+            <span id="file-label-text">Click to upload your piece</span>
+          </label>
+        </div>
+        <div id="preview-container">
+          <img id="preview-img" src="" alt="Preview">
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">
+        <span>Submit to the Circus</span>
+      </button>
+
+      <div class="status" id="status"></div>
+
+    </form>
+
+    <div class="score-card">
+      <h3>⚖️ Public Scoring — Event 1</h3>
+      <div class="score-row">
+        <span class="score-name">The Spark</span>
+        <span class="score-desc">First propaganda piece submitted by a faction</span>
+        <span class="score-pts">+5 pts</span>
+      </div>
+      <div class="score-row">
+        <span class="score-name">The Cascade</span>
+        <span class="score-desc">Every unique faction member who submits at least one piece</span>
+        <span class="score-pts">+2 pts / member</span>
+      </div>
+      <div class="score-row">
+        <span class="score-name">The Masterpiece</span>
+        <span class="score-desc">Shortlisted by the neutral party as the strongest piece</span>
+        <span class="score-pts">+25 pts</span>
+      </div>
+      <div class="score-row">
+        <span class="score-name">The Consensus</span>
+        <span class="score-desc">Every 10 server reaction votes on the final shortlist</span>
+        <span class="score-pts">+5 pts (max 50)</span>
+      </div>
+      <div class="score-row">
+        <span class="score-name">The Ratio</span>
+        <span class="score-desc">Reacting to enemy propaganda with a counter-emoji</span>
+        <span class="score-pts">+1 pt / user</span>
+      </div>
+    </div>
+
+    <p class="footer">the circus is watching — C.</p>
+
+  </div>
+
+  <script>
+    const EDGE_FUNCTION_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co/functions/v1/submit-propaganda'
+
+    // File preview
+    document.getElementById('image').addEventListener('change', function(e) {
+      const file = e.target.files[0]
+      if (!file) return
+
+      const label = document.getElementById('file-label')
+      const labelText = document.getElementById('file-label-text')
+      const preview = document.getElementById('preview-container')
+      const previewImg = document.getElementById('preview-img')
+
+      labelText.textContent = file.name
+      label.classList.add('has-file')
+
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        previewImg.src = e.target.result
+        preview.style.display = 'block'
+      }
+      reader.readAsDataURL(file)
+    })
+
+    // Form submit
+    document.getElementById('propaganda-form').addEventListener('submit', async function(e) {
+      e.preventDefault()
+
+      const btn = document.getElementById('submit-btn')
+      const status = document.getElementById('status')
+
+      btn.disabled = true
+      btn.querySelector('span').textContent = 'Submitting to the Circus...'
+      status.className = 'status'
+      status.style.display = 'none'
+
+      try {
+        const formData = new FormData()
+        formData.append('army', document.querySelector('input[name="army"]:checked').value)
+        formData.append('discord_username', document.getElementById('username').value.trim())
+        formData.append('title', document.getElementById('title').value.trim())
+        formData.append('description', document.getElementById('description').value.trim())
+        formData.append('image', document.getElementById('image').files[0])
+
+        const res = await fetch(EDGE_FUNCTION_URL, {
+          method: 'POST',
+          body: formData
+        })
+
+        const data = await res.json()
+
+        if (res.ok && data.success) {
+          status.className = 'status success'
+          status.textContent = 'Your propaganda has been submitted. Caine is pleased. The circus will judge accordingly.'
+          this.reset()
+          document.getElementById('file-label').classList.remove('has-file')
+          document.getElementById('file-label-text').textContent = 'Click to upload your piece'
+          document.getElementById('preview-container').style.display = 'none'
+        } else {
+          throw new Error(data.error || 'Something went wrong')
+        }
+
+      } catch (err) {
+        status.className = 'status error'
+        status.textContent = `Failed to submit: ${err.message}`
+      } finally {
+        btn.disabled = false
+        btn.querySelector('span').textContent = 'Submit to the Circus'
+      }
+    })
+  </script>
+
+</body>
+</html>
