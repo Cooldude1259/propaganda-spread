@@ -125,6 +125,7 @@
   <script>
     const SB_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co'
     const SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5obW1mcml3dGhzdmFjZnNyY2hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MjYzMjQsImV4cCI6MjA5NDUwMjMyNH0.FIN04Hjcsm6oMMpHB-lFG4_-FBByjtWX7HtezoHL1-o'
+    const SB_SERVICE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5obW1mcml3dGhzdmFjZnNyY2hkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3ODkyNjMyNCwiZXhwIjoyMDk0NTAyMzI0fQ.0Uj1BQyalAihRmLsfWAT4AU-1kmIdn7roFbGNUG9BgQ'
     const DISCORD_CLIENT_ID = '1490588158985900062'
     const REDIRECT_URI = encodeURIComponent(window.location.href.split('?')[0])
     const ALLOWED_USER_ID = '794832846228684800' // Your Discord user ID
@@ -209,9 +210,30 @@
       const army = document.getElementById('hv-army').value
       const variable_name = document.getElementById('hv-name').value.trim()
       const value = parseFloat(document.getElementById('hv-value').value)
-      if (!variable_name || isNaN(value)) return showStatus('hv-status', 'Fill in variable name and value', 'error')
-      await sbFetch('hidden_variables', 'POST', { event_number, army, variable_name, value })
-      showStatus('hv-status', 'Hidden variable saved!', 'success')
+  
+      if (!variable_name || isNaN(value)) {
+        return showStatus('hv-status', 'Fill in variable name and value', 'error')
+      }
+
+      const res = await fetch(`${SB_URL}/rest/v1/hidden_variables`, {
+        method: 'POST',
+        headers: {
+          apikey: SB_SERVICE,
+          Authorization: `Bearer ${SB_SERVICE}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=representation'
+        },
+        body: JSON.stringify({ event_number, army, variable_name, value })
+      })
+
+      if (res.ok) {
+        showStatus('hv-status', 'Hidden variable saved!', 'success')
+        document.getElementById('hv-name').value = ''
+        document.getElementById('hv-value').value = ''
+      } else {
+        const err = await res.json()
+        showStatus('hv-status', `Error: ${err.message || 'Failed to save'}`, 'error')
+      }
     }
 
     async function unlockReveal() {
