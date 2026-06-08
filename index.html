@@ -28,7 +28,6 @@
       position: relative;
     }
 
-    /* Blob background */
     .blob-container {
       position: fixed;
       inset: 0;
@@ -45,52 +44,15 @@
       mix-blend-mode: screen;
     }
 
-    .blob1 {
-      width: 500px; height: 500px;
-      background: linear-gradient(135deg, #8b1a1a, #c9392b);
-      top: -10%; left: -5%;
-      animation: float1 22s infinite ease-in-out;
-    }
+    .blob1 { width: 500px; height: 500px; background: linear-gradient(135deg, #8b1a1a, #c9392b); top: -10%; left: -5%; animation: float1 22s infinite ease-in-out; }
+    .blob2 { width: 420px; height: 420px; background: linear-gradient(135deg, #c9a84c, #8b6914); top: 40%; right: -8%; animation: float2 26s infinite ease-in-out; }
+    .blob3 { width: 460px; height: 460px; background: linear-gradient(135deg, #2c1a4a, #6b21a8); bottom: -10%; left: 35%; animation: float3 30s infinite ease-in-out; }
+    .blob4 { width: 300px; height: 300px; background: linear-gradient(135deg, #1a3a1a, #166534); top: 20%; left: 30%; animation: float1 18s infinite ease-in-out reverse; opacity: 0.15; }
 
-    .blob2 {
-      width: 420px; height: 420px;
-      background: linear-gradient(135deg, #c9a84c, #8b6914);
-      top: 40%; right: -8%;
-      animation: float2 26s infinite ease-in-out;
-    }
+    @keyframes float1 { 0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); } 33% { transform: translate(60px,-70px) scale(1.12) rotate(120deg); } 66% { transform: translate(-50px,50px) scale(0.9) rotate(240deg); } }
+    @keyframes float2 { 0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); } 33% { transform: translate(-70px,60px) scale(0.95) rotate(120deg); } 66% { transform: translate(50px,-60px) scale(1.1) rotate(240deg); } }
+    @keyframes float3 { 0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); } 33% { transform: translate(70px,40px) scale(1.08) rotate(120deg); } 66% { transform: translate(-60px,-60px) scale(0.93) rotate(240deg); } }
 
-    .blob3 {
-      width: 460px; height: 460px;
-      background: linear-gradient(135deg, #2c1a4a, #6b21a8);
-      bottom: -10%; left: 35%;
-      animation: float3 30s infinite ease-in-out;
-    }
-
-    .blob4 {
-      width: 300px; height: 300px;
-      background: linear-gradient(135deg, #1a3a1a, #166534);
-      top: 20%; left: 30%;
-      animation: float1 18s infinite ease-in-out reverse;
-      opacity: 0.15;
-    }
-
-    @keyframes float1 {
-      0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); }
-      33% { transform: translate(60px,-70px) scale(1.12) rotate(120deg); }
-      66% { transform: translate(-50px,50px) scale(0.9) rotate(240deg); }
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); }
-      33% { transform: translate(-70px,60px) scale(0.95) rotate(120deg); }
-      66% { transform: translate(50px,-60px) scale(1.1) rotate(240deg); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translate(0,0) scale(1) rotate(0deg); }
-      33% { transform: translate(70px,40px) scale(1.08) rotate(120deg); }
-      66% { transform: translate(-60px,-60px) scale(0.93) rotate(240deg); }
-    }
-
-    /* Noise overlay */
     body::before {
       content: '';
       position: fixed;
@@ -101,7 +63,6 @@
       opacity: 0.4;
     }
 
-    /* Layout */
     .page {
       position: relative;
       z-index: 2;
@@ -110,7 +71,6 @@
       padding: 60px 24px 80px;
     }
 
-    /* Header */
     .header {
       text-align: center;
       margin-bottom: 56px;
@@ -137,9 +97,7 @@
       text-shadow: 0 0 40px rgba(201,168,76,0.3);
     }
 
-    .title span {
-      color: var(--gold);
-    }
+    .title span { color: var(--gold); }
 
     .subtitle {
       font-size: 18px;
@@ -155,7 +113,6 @@
       margin: 24px auto 0;
     }
 
-    /* Caine quote */
     .caine-quote {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -168,24 +125,9 @@
       animation-delay: 0.5s;
     }
 
-    .caine-quote p {
-      font-style: italic;
-      color: var(--text-dim);
-      font-size: 16px;
-      line-height: 1.6;
-    }
+    .caine-quote p { font-style: italic; color: var(--text-dim); font-size: 16px; line-height: 1.6; }
+    .caine-quote .speaker { font-family: 'Abril Fatface', serif; font-size: 10px; letter-spacing: 0.3em; color: var(--gold); margin-top: 10px; display: block; opacity: 0.7; }
 
-    .caine-quote .speaker {
-      font-family: 'Abril Fatface', serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      margin-top: 10px;
-      display: block;
-      opacity: 0.7;
-    }
-
-    /* Form */
     .form-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -196,10 +138,7 @@
       animation-delay: 1s;
     }
 
-    .form-section {
-      margin-bottom: 32px;
-    }
-
+    .form-section { margin-bottom: 32px; }
     .form-section:last-of-type { margin-bottom: 0; }
 
     label {
@@ -213,13 +152,9 @@
       opacity: 0.9;
     }
 
-    label .required {
-      color: var(--blood);
-      margin-left: 4px;
-    }
+    label .required { color: var(--blood); margin-left: 4px; }
 
-    input[type="text"],
-    textarea {
+    input[type="text"], textarea {
       width: 100%;
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
@@ -232,40 +167,18 @@
       transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    input[type="text"]:focus,
-    textarea:focus {
+    input[type="text"]:focus, textarea:focus {
       border-color: rgba(201,168,76,0.5);
       box-shadow: 0 0 0 1px rgba(201,168,76,0.1);
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
+    textarea { resize: vertical; min-height: 90px; }
+    input[type="text"]::placeholder, textarea::placeholder { color: var(--text-dim); font-style: italic; }
 
-    input[type="text"]::placeholder,
-    textarea::placeholder {
-      color: var(--text-dim);
-      font-style: italic;
-    }
+    .army-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-    /* Army selector */
-    .army-selector {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .army-option {
-      position: relative;
-    }
-
-    .army-option input[type="radio"] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+    .army-option { position: relative; }
+    .army-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
 
     .army-option label {
       display: flex;
@@ -282,34 +195,12 @@
       font-size: 11px;
     }
 
-    .army-option label .emoji {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 2px;
-    }
+    .army-option label .emoji { font-size: 28px; display: block; margin-bottom: 2px; }
+    .army-option input:checked + label { border-color: var(--gold); background: rgba(201,168,76,0.08); box-shadow: 0 0 20px rgba(201,168,76,0.1); }
+    .army-option label:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.04); }
 
-    .army-option input:checked + label {
-      border-color: var(--gold);
-      background: rgba(201,168,76,0.08);
-      box-shadow: 0 0 20px rgba(201,168,76,0.1);
-    }
-
-    .army-option label:hover {
-      border-color: rgba(201,168,76,0.4);
-      background: rgba(201,168,76,0.04);
-    }
-
-    /* File upload */
-    .file-upload {
-      position: relative;
-    }
-
-    .file-input {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+    .file-upload { position: relative; }
+    .file-input { position: absolute; opacity: 0; width: 0; height: 0; }
 
     .file-label {
       display: flex;
@@ -332,36 +223,13 @@
       text-transform: uppercase;
     }
 
-    .file-label:hover {
-      border-color: rgba(201,168,76,0.6);
-      background: rgba(201,168,76,0.04);
-    }
+    .file-label:hover { border-color: rgba(201,168,76,0.6); background: rgba(201,168,76,0.04); }
+    .file-label .upload-icon { font-size: 32px; opacity: 0.5; }
+    .file-label.has-file { border-color: rgba(201,168,76,0.5); color: var(--gold); }
 
-    .file-label .upload-icon {
-      font-size: 32px;
-      opacity: 0.5;
-    }
+    #preview-container { display: none; margin-top: 12px; }
+    #preview-container img { width: 100%; max-height: 300px; object-fit: contain; border: 1px solid var(--border); border-radius: 2px; }
 
-    .file-label.has-file {
-      border-color: rgba(201,168,76,0.5);
-      color: var(--gold);
-    }
-
-    /* Preview */
-    #preview-container {
-      display: none;
-      margin-top: 12px;
-    }
-
-    #preview-container img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-    }
-
-    /* Submit button */
     .submit-btn {
       width: 100%;
       padding: 16px;
@@ -382,50 +250,16 @@
       animation: gentleFloat 6s ease-in-out infinite;
     }
 
-    .submit-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #c9392b, #e05a3a);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
+    .submit-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #c9392b, #e05a3a); opacity: 0; transition: opacity 0.3s; }
     .submit-btn:hover::before { opacity: 1; }
     .submit-btn:hover { box-shadow: 0 0 30px rgba(201,57,43,0.4); }
-
     .submit-btn span { position: relative; z-index: 1; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .submit-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    .status { margin-top: 20px; padding: 16px 20px; border-radius: 2px; font-size: 16px; text-align: center; display: none; }
+    .status.success { background: rgba(22,101,52,0.2); border: 1px solid rgba(34,197,94,0.3); color: #86efac; display: block; }
+    .status.error { background: rgba(139,26,26,0.2); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; display: block; }
 
-    /* Status messages */
-    .status {
-      margin-top: 20px;
-      padding: 16px 20px;
-      border-radius: 2px;
-      font-size: 16px;
-      text-align: center;
-      display: none;
-    }
-
-    .status.success {
-      background: rgba(22,101,52,0.2);
-      border: 1px solid rgba(34,197,94,0.3);
-      color: #86efac;
-      display: block;
-    }
-
-    .status.error {
-      background: rgba(139,26,26,0.2);
-      border: 1px solid rgba(239,68,68,0.3);
-      color: #fca5a5;
-      display: block;
-    }
-
-    /* Score reference */
     .score-card {
       margin-top: 40px;
       background: var(--surface);
@@ -437,64 +271,36 @@
       animation-delay: 1.5s;
     }
 
-    .score-card h3 {
-      font-family: 'Abril Fatface', serif;
-      font-size: 11px;
-      letter-spacing: 0.4em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+    .score-card h3 { font-family: 'Abril Fatface', serif; font-size: 11px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; text-align: center; }
 
-    .score-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
-      gap: 16px;
-    }
-
+    .score-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,0.08); gap: 16px; }
     .score-row:last-child { border-bottom: none; }
+    .score-name { font-family: 'Abril Fatface', serif; font-size: 12px; color: var(--gold); letter-spacing: 0.1em; }
+    .score-desc { font-size: 14px; color: var(--text-dim); font-style: italic; flex: 1; padding: 0 16px; }
+    .score-pts { font-family: 'Abril Fatface', serif; font-size: 14px; color: #fff; white-space: nowrap; }
 
-    .score-name {
-      font-family: 'Abril Fatface', serif;
-      font-size: 12px;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-    }
-
-    .score-desc {
-      font-size: 14px;
-      color: var(--text-dim);
-      font-style: italic;
-      flex: 1;
-      padding: 0 16px;
-    }
-
-    .score-pts {
-      font-family: 'Abril Fatface', serif;
-      font-size: 14px;
-      color: #fff;
-      white-space: nowrap;
-    }
-
-    @keyframes gentleFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-    }
-
-    /* Footer */
-    .footer {
+    /* CLOSED STATE */
+    .closed-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      border-radius: 4px;
+      padding: 60px 40px;
       text-align: center;
-      margin-top: 60px;
-      font-family: 'Abril Fatface', serif;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      color: var(--text-dim);
-      opacity: 0.5;
+      animation: gentleFloat 9s ease-in-out infinite;
     }
+
+    .closed-card .closed-icon { font-size: 48px; margin-bottom: 24px; display: block; opacity: 0.6; }
+    .closed-card h2 { font-family: 'Abril Fatface', serif; font-size: 28px; color: #fff; margin-bottom: 16px; letter-spacing: 0.05em; }
+    .closed-card p { color: var(--text-dim); font-size: 16px; font-style: italic; line-height: 1.7; }
+    .closed-card .caine-sig { font-family: 'Abril Fatface', serif; font-size: 10px; letter-spacing: 0.3em; color: var(--gold); margin-top: 24px; display: block; opacity: 0.7; }
+
+    @keyframes gentleFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+
+    .footer { text-align: center; margin-top: 60px; font-family: 'Abril Fatface', serif; font-size: 10px; letter-spacing: 0.3em; color: var(--text-dim); opacity: 0.5; }
+
+    #open-content { display: none; }
+    #closed-content { display: none; }
   </style>
 </head>
 <body>
@@ -515,139 +321,175 @@
       <div class="divider"></div>
     </header>
 
-    <div class="caine-quote">
-      <p>"oh, now THIS is what i like to see. the circus is watching. vote accordingly."</p>
-      <span class="speaker">— CAINE</span>
+    <!-- OPEN STATE -->
+    <div id="open-content">
+      <div class="caine-quote">
+        <p>"oh, now THIS is what i like to see. the circus is watching. vote accordingly."</p>
+        <span class="speaker">— CAINE</span>
+      </div>
+
+      <form class="form-card" id="propaganda-form">
+        <div class="form-section">
+          <label>Your Army <span class="required">*</span></label>
+          <div class="army-selector">
+            <div class="army-option">
+              <input type="radio" name="army" id="rat" value="rat" required>
+              <label for="rat"><span class="emoji">🐀</span>Rat Army</label>
+            </div>
+            <div class="army-option">
+              <input type="radio" name="army" id="cat" value="cat" required>
+              <label for="cat"><span class="emoji">🐱</span>Cat Army</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label for="username">Discord Username <span class="required">*</span></label>
+          <input type="text" id="username" name="discord_username" placeholder="your discord username" required>
+        </div>
+
+        <div class="form-section">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" placeholder="give your piece a name">
+        </div>
+
+        <div class="form-section">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="what does your propaganda say?"></textarea>
+        </div>
+
+        <div class="form-section">
+          <label>Propaganda Image <span class="required">*</span></label>
+          <div class="file-upload">
+            <input type="file" id="image" class="file-input" accept="image/*" required>
+            <label for="image" class="file-label" id="file-label">
+              <span class="upload-icon">🎨</span>
+              <span id="file-label-text">Click to upload your piece</span>
+            </label>
+          </div>
+          <div id="preview-container">
+            <img id="preview-img" src="" alt="Preview">
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span>Submit to the Circus</span>
+        </button>
+
+        <div class="status" id="status"></div>
+      </form>
+
+      <div class="score-card">
+        <h3>⚖️ Public Scoring — Event 1</h3>
+        <div class="score-row">
+          <span class="score-name">The Spark</span>
+          <span class="score-desc">First propaganda piece submitted by a faction</span>
+          <span class="score-pts">+5 pts</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name">The Cascade</span>
+          <span class="score-desc">Every unique faction member who submits at least one piece</span>
+          <span class="score-pts">+2 pts / member</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name">The Masterpiece</span>
+          <span class="score-desc">Shortlisted by the neutral party as the strongest piece</span>
+          <span class="score-pts">+25 pts</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name">The Consensus</span>
+          <span class="score-desc">Every 10 server reaction votes on the final shortlist</span>
+          <span class="score-pts">+5 pts (max 50)</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name">The Ratio</span>
+          <span class="score-desc">Reacting to enemy propaganda with a counter-emoji</span>
+          <span class="score-pts">+1 pt / user</span>
+        </div>
+      </div>
     </div>
 
-    <form class="form-card" id="propaganda-form">
-
-      <div class="form-section">
-        <label>Your Army <span class="required">*</span></label>
-        <div class="army-selector">
-          <div class="army-option">
-            <input type="radio" name="army" id="rat" value="rat" required>
-            <label for="rat">
-              <span class="emoji">🐀</span>
-              Rat Army
-            </label>
-          </div>
-          <div class="army-option">
-            <input type="radio" name="army" id="cat" value="cat" required>
-            <label for="cat">
-              <span class="emoji">🐱</span>
-              Cat Army
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <label for="username">Discord Username <span class="required">*</span></label>
-        <input type="text" id="username" name="discord_username" placeholder="your discord username" required>
-      </div>
-
-      <div class="form-section">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" placeholder="give your piece a name">
-      </div>
-
-      <div class="form-section">
-        <label for="description">Description</label>
-        <textarea id="description" name="description" placeholder="what does your propaganda say? what does it mean?"></textarea>
-      </div>
-
-      <div class="form-section">
-        <label>Propaganda Image <span class="required">*</span></label>
-        <div class="file-upload">
-          <input type="file" id="image" class="file-input" accept="image/*" required>
-          <label for="image" class="file-label" id="file-label">
-            <span class="upload-icon">🎨</span>
-            <span id="file-label-text">Click to upload your piece</span>
-          </label>
-        </div>
-        <div id="preview-container">
-          <img id="preview-img" src="" alt="Preview">
-        </div>
-      </div>
-
-      <button type="submit" class="submit-btn" id="submit-btn">
-        <span>Submit to the Circus</span>
-      </button>
-
-      <div class="status" id="status"></div>
-
-    </form>
-
-    <div class="score-card">
-      <h3>⚖️ Public Scoring — Event 1</h3>
-      <div class="score-row">
-        <span class="score-name">The Spark</span>
-        <span class="score-desc">First propaganda piece submitted by a faction</span>
-        <span class="score-pts">+5 pts</span>
-      </div>
-      <div class="score-row">
-        <span class="score-name">The Cascade</span>
-        <span class="score-desc">Every unique faction member who submits at least one piece</span>
-        <span class="score-pts">+2 pts / member</span>
-      </div>
-      <div class="score-row">
-        <span class="score-name">The Masterpiece</span>
-        <span class="score-desc">Shortlisted by the neutral party as the strongest piece</span>
-        <span class="score-pts">+25 pts</span>
-      </div>
-      <div class="score-row">
-        <span class="score-name">The Consensus</span>
-        <span class="score-desc">Every 10 server reaction votes on the final shortlist</span>
-        <span class="score-pts">+5 pts (max 50)</span>
-      </div>
-      <div class="score-row">
-        <span class="score-name">The Ratio</span>
-        <span class="score-desc">Reacting to enemy propaganda with a counter-emoji</span>
-        <span class="score-pts">+1 pt / user</span>
+    <!-- CLOSED STATE -->
+    <div id="closed-content">
+      <div class="closed-card">
+        <span class="closed-icon">🎪</span>
+        <h2>The Window Has Closed</h2>
+        <p>
+          submissions for event one are no longer being accepted.<br><br>
+          the circus has made its selections.<br>
+          the stage will speak soon.
+        </p>
+        <span class="caine-sig">— C.</span>
       </div>
     </div>
 
     <p class="footer">the circus is watching — C.</p>
-
   </div>
 
   <script>
     const EDGE_FUNCTION_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co/functions/v1/submit-propaganda'
 
+    // Close time: 7:30pm ACST = 11:00 UTC
+    const CLOSE_TIME_UTC_HOUR = 11
+    const CLOSE_TIME_UTC_MIN = 0
+
+    function isEventClosed() {
+      const now = new Date()
+      const utcHour = now.getUTCHours()
+      const utcMin = now.getUTCMinutes()
+      // Check if past 11:00 UTC (7:30pm ACST)
+      return utcHour > CLOSE_TIME_UTC_HOUR || (utcHour === CLOSE_TIME_UTC_HOUR && utcMin >= CLOSE_TIME_UTC_MIN)
+    }
+
+    function init() {
+      if (isEventClosed()) {
+        document.getElementById('closed-content').style.display = 'block'
+        document.getElementById('open-content').style.display = 'none'
+      } else {
+        document.getElementById('open-content').style.display = 'block'
+        document.getElementById('closed-content').style.display = 'none'
+
+        // Auto-check every minute in case page is left open
+        setTimeout(() => {
+          if (isEventClosed()) {
+            document.getElementById('open-content').style.display = 'none'
+            document.getElementById('closed-content').style.display = 'block'
+          }
+        }, 60000)
+      }
+    }
+
+    init()
+
     // File preview
     document.getElementById('image').addEventListener('change', function(e) {
       const file = e.target.files[0]
       if (!file) return
-
       const label = document.getElementById('file-label')
       const labelText = document.getElementById('file-label-text')
       const preview = document.getElementById('preview-container')
       const previewImg = document.getElementById('preview-img')
-
       labelText.textContent = file.name
       label.classList.add('has-file')
-
       const reader = new FileReader()
-      reader.onload = (e) => {
-        previewImg.src = e.target.result
-        preview.style.display = 'block'
-      }
+      reader.onload = (e) => { previewImg.src = e.target.result; preview.style.display = 'block' }
       reader.readAsDataURL(file)
     })
 
     // Form submit
     document.getElementById('propaganda-form').addEventListener('submit', async function(e) {
       e.preventDefault()
-
+      if (isEventClosed()) {
+        document.getElementById('open-content').style.display = 'none'
+        document.getElementById('closed-content').style.display = 'block'
+        return
+      }
       const btn = document.getElementById('submit-btn')
       const status = document.getElementById('status')
-
       btn.disabled = true
       btn.querySelector('span').textContent = 'Submitting to the Circus...'
       status.className = 'status'
       status.style.display = 'none'
-
       try {
         const formData = new FormData()
         formData.append('army', document.querySelector('input[name="army"]:checked').value)
@@ -655,14 +497,8 @@
         formData.append('title', document.getElementById('title').value.trim())
         formData.append('description', document.getElementById('description').value.trim())
         formData.append('image', document.getElementById('image').files[0])
-
-        const res = await fetch(EDGE_FUNCTION_URL, {
-          method: 'POST',
-          body: formData
-        })
-
+        const res = await fetch(EDGE_FUNCTION_URL, { method: 'POST', body: formData })
         const data = await res.json()
-
         if (res.ok && data.success) {
           status.className = 'status success'
           status.textContent = 'Your propaganda has been submitted. Caine is pleased. The circus will judge accordingly.'
@@ -673,7 +509,6 @@
         } else {
           throw new Error(data.error || 'Something went wrong')
         }
-
       } catch (err) {
         status.className = 'status error'
         status.textContent = `Failed to submit: ${err.message}`
