@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great War — Full Results</title>
+  <style>
+    body { font-family: sans-serif; background: #0a0a0a; color: #ddd; max-width: 700px; margin: 0 auto; padding: 20px; }
+    h1 { color: #c9a84c; text-align: center; }
+    h2 { color: #c9a84c; font-size: 14px; margin-top: 24px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+    th { text-align: left; color: #888; font-weight: normal; padding: 4px 8px; }
+    td { padding: 6px 8px; border-bottom: 1px solid #1a1a1a; }
+    .rat { color: #a0522d; }
+    .cat { color: #9b59b6; }
+    .total { font-weight: bold; color: #fff; }
+    .winner { text-align: center; padding: 30px; border: 1px solid #c9a84c; border-radius: 4px; margin: 20px 0; }
+    .winner h2 { font-size: 24px; color: #fff; border: none; }
+    .formula { color: #666; font-size: 12px; font-style: italic; }
+  </style>
+</head>
+<body>
+  <div id="root">Loading...</div>
+
+  <script>
+    const SB_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co'
+    const SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5obW1mcml3dGhzdmFjZnNyY2hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4NjMzNDIsImV4cCI6MjA2MDQzOTM0Mn0.r0CaGOsSRsOoO2ibsFgSHEaWMN8lFSVBqpDLBRjFHSQ'
+
+    async function query(table, params = '') {
+      const r = await fetch(`${SB_URL}/rest/v1/${table}?${params}`, {
+        headers: { apikey: SB_ANON, Authorization: `Bearer ${SB_ANON}` }
+      })
+      return r.json()
+    }
+
+    async function load() {
+      // Check if reveal is unlocked
+      const configs = await query('leaderboard_config', 'order=event_number')
+      const revealed = configs.some(c => c.full_reveal_unlocked)
+
+      if (!revealed) {
+        // Redirect to short page
+        window.location.href = 'short.html'
+        return
+      }
+
+      const scores = await query('scores', 'order=event_number')
+
+      // Build full results
+      let html = '<h1>⚔️ The Great War — Final Results</h1>'
+      html += '<p class="formula" style="text-align:center">Formula: ((Raw Microscore × Hidden Place Multiplier) + Hidden Place Bonus) × Hidden Event Multiplier</p>'
+
+      let grandTotals = { rat: 0, cat: 0 }
+
+      for (const cfg of configs) {
+        const evScores = scores.filter(s => s.event_number === cfg.event_number)
+        if (evScores.length === 0) continue
+
+        const evTotals = { rat: 0, cat: 0 }
+        evScores.forEach(s => { evTotals[s.army] += s.points })
+
+        grandTotals.rat += evTotals.rat
+        grandTotals.cat += evTotals.cat
+
+        let rows = evScores.map(s => `
+          <tr>
+            <td class="${s.army}">${s.army === 'rat' ? '🐀' : '🐱'} ${s.metric_name}</td>
+            <td>${s.note || '—'}</td>
+            <td class="${s.army}">${s.points > 0 ? '+' : ''}${s.points}</td>
+          </tr>`).join('')
+
+        html += `
+          <h2>Event ${cfg.event_number} — ${cfg.event_name}</h2>
+          <table>
+            <tr><th>Metric</th><th>Note</th><th>Final Pts</th></tr>
+            ${rows}
+            <tr><td class="total" colspan="2">🐀 Rat Total</td><td class="total rat">${evTotals.rat}</td></tr>
+            <tr><td class="total" colspan="2">🐱 Cat Total</td><td class="total cat">${evTotals.cat}</td></tr>
+          </table>`
+      }
+
+      const winner = grandTotals.rat > grandTotals.cat ? '🐀 Rat Army' : '🐱 Cat Army'
+      const winnerClass = grandTotals.rat > grandTotals.cat ? 'rat' : 'cat'
+
+      html += `
+        <div class="winner">
+          <div style="color:#888;font-size:12px;margin-bottom:8px">FINAL SCORE</div>
+          <div style="display:flex;justify-content:space-around;margin-bottom:20px">
+            <div><div style="color:#a0522d">🐀 Rats</div><div style="font-size:32px;font-weight:bold;color:#a0522d">${grandTotals.rat}</div></div>
+            <div style="color:#444;font-size:24px;align-self:center">vs</div>
+            <div><div style="color:#9b59b6">🐱 Cats</div><div style="font-size:32px;font-weight:bold;color:#9b59b6">${grandTotals.cat}</div></div>
+          </div>
+          <h2 class="${winnerClass}">${winner} wins the Great War</h2>
+        </div>`
+
+      document.getElementById('root').innerHTML = html
+    }
+
+    load()
+  </script>
+</body>
+</html>
