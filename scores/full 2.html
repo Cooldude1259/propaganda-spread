@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great War — Full Results</title>
+  <style>
+    body { font-family: sans-serif; background: #0a0a0a; color: #ddd; max-width: 700px; margin: 0 auto; padding: 20px; }
+    h1 { color: #c9a84c; text-align: center; }
+    h2 { color: #c9a84c; font-size: 14px; margin-top: 24px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+    th { text-align: left; color: #888; font-weight: normal; padding: 4px 8px; }
+    td { padding: 6px 8px; border-bottom: 1px solid #1a1a1a; }
+    .rat { color: #a0522d; }
+    .cat { color: #9b59b6; }
+    .total { font-weight: bold; color: #fff; }
+    .winner { text-align: center; padding: 30px; border: 1px solid #c9a84c; border-radius: 4px; margin: 20px 0; }
+    .winner h2 { font-size: 24px; color: #fff; border: none; }
+    .formula { color: #666; font-size: 12px; font-style: italic; text-align: center; margin-bottom: 8px; }
+    .hidden-row { color: #666; font-size: 12px; font-style: italic; }
+    .multiplier-badge { background: #1a1a2a; color: #7b8cde; font-size: 11px; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+    .bonus-badge { background: #1a2a1a; color: #7bde8c; font-size: 11px; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+  </style>
+</head>
+<body>
+  <div id="root"><p style="color:#666;text-align:center;padding:40px">Checking access...</p></div>
+
+  <script>
+    const SB_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co'
+    const SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5obW1mcml3dGhzdmFjZnNyY2hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MjYzMjQsImV4cCI6MjA5NDUwMjMyNH0.FIN04Hjcsm6oMMpHB-lFG4_-FBByjtWX7HtezoHL1-o'
+
+    async function query(table, params = '') {
+      const r = await fetch(`${SB_URL}/rest/v1/${table}?${params}`, {
+        headers: { apikey: SB_ANON, Authorization: `Bearer ${SB_ANON}` }
+      })
+      return r.json()
+    }
+
+    function isMultiplier(value) {
+      return !Number.isInteger(value)
+    }
+
+    async function load() {
+      const configs = await query('leaderboard_config', 'order=event_number')
+      const revealed = configs.some(c => c.full_reveal_unlocked)
+
+      if (!revealed) {
+        window.location.href = 'short.html'
+        return
+      }
+
+      const [scores, hiddenVars] = await Promise.all([
+        query('scores', 'order=event_number'),
+        query('hidden_variables', 'order=event_number')
+      ])
+
+      let html = '<h1>⚔️ The Great War — Final Results</h1>'
+      html += '<p class="formula">Formula: (Raw Microscore + Flat Bonuses) × Event Multiplier</p>'
+      html += '<p class="formula">Float values = multipliers &nbsp;·&nbsp; Integer values = flat bonuses</p>'
+
+      let grandTotals = { rat: 0, cat: 0 }
+
+      for (const cfg of configs) {
+        const evScores = scores.filter(s => s.event_number === cfg.event_number)
+        if (evScores.length === 0) continue
+
+        const evHidden = hiddenVars.filter(h => h.event_number === cfg.event_number)
+
+        const rawTotals = { rat: 0, cat: 0 }
+        evScores.forEach(s => { rawTotals[s.army] += s.points })
+
+        const hidden = {
+          rat: { multipliers: [], bonuses: [] },
+          cat: { multipliers: [], bonuses: [] }
+        }
+
+        evHidden.forEach(h => {
+          const val = parseFloat(h.value)
+          const target = hidden[h.army]
+          if (!target) return
+          if (isMultiplier(val)) {
+            target.multipliers.push({ name: h.variable_name, value: val })
+          } else {
+            target.bonuses.push({ name: h.variable_name, value: val })
+          }
+        })
+
+        const finalScores = {}
+        for (const army of ['rat', 'cat']) {
+          const raw = rawTotals[army]
+          const bonusTotal = hidden[army].bonuses.reduce((sum, b) => sum + b.value, 0)
+          const multiplierTotal = hidden[army].multipliers.reduce((prod, m) => prod * m.value, 1)
+          finalScores[army] = (raw + bonusTotal) * multiplierTotal
+          grandTotals[army] += finalScores[army]
+        }
+
+        let rows = evScores.map(s => `
+          <tr>
+            <td class="${s.army}">${s.army === 'rat' ? '🐀' : '🐱'} ${s.metric_name}</td>
+            <td>${s.note || '—'}</td>
+            <td class="${s.army}">+${s.points}</td>
+          </tr>`).join('')
+
+        for (const army of ['rat', 'cat']) {
+          hidden[army].bonuses.forEach(b => {
+            rows += `<tr class="hidden-row">
+              <td class="${army}">${army === 'rat' ? '🐀' : '🐱'} ${b.name} <span class="bonus-badge">+bonus</span></td>
+              <td>hidden variable</td>
+              <td class="${army}">+${b.value}</td>
+            </tr>`
+          })
+          hidden[army].multipliers.forEach(m => {
+            rows += `<tr class="hidden-row">
+              <td class="${army}">${army === 'rat' ? '🐀' : '🐱'} ${m.name} <span class="multiplier-badge">×multiplier</span></td>
+              <td>hidden variable</td>
+              <td class="${army}">×${m.value}</td>
+            </tr>`
+          })
+        }
+
+        html += `
+          <h2>Event ${cfg.event_number} — ${cfg.event_name}</h2>
+          <table>
+            <tr><th>Metric</th><th>Note</th><th>Pts</th></tr>
+            ${rows}
+            <tr>
+              <td class="total rat" colspan="2">🐀 Rat Raw: ${rawTotals.rat} → Final</td>
+              <td class="total rat">${finalScores.rat.toFixed(1)}</td>
+            </tr>
+            <tr>
+              <td class="total cat" colspan="2">🐱 Cat Raw: ${rawTotals.cat} → Final</td>
+              <td class="total cat">${finalScores.cat.toFixed(1)}</td>
+            </tr>
+          </table>`
+      }
+
+      const winner = grandTotals.rat > grandTotals.cat ? '🐀 Rat Army' : '🐱 Cat Army'
+      const winnerClass = grandTotals.rat > grandTotals.cat ? 'rat' : 'cat'
+
+      html += `
+        <div class="winner">
+          <div style="color:#888;font-size:12px;margin-bottom:8px">FINAL SCORE</div>
+          <div style="display:flex;justify-content:space-around;margin-bottom:20px">
+            <div>
+              <div style="color:#a0522d">🐀 Rat Army</div>
+              <div style="font-size:32px;font-weight:bold;color:#a0522d">${grandTotals.rat.toFixed(1)}</div>
+            </div>
+            <div style="color:#444;font-size:24px;align-self:center">vs</div>
+            <div>
+              <div style="color:#9b59b6">🐱 Cat Army</div>
+              <div style="font-size:32px;font-weight:bold;color:#9b59b6">${grandTotals.cat.toFixed(1)}</div>
+            </div>
+          </div>
+          <h2 class="${winnerClass}">${winner} wins the Great War</h2>
+        </div>`
+
+      document.getElementById('root').innerHTML = html
+    }
+
+    load()
+  </script>
+</body>
+</html>
