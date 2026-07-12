@@ -31,8 +31,7 @@ body{background:#050810;font-family:'Inter',sans-serif;-webkit-font-smoothing:an
 .bignum{font-family:'Sora',sans-serif;font-weight:800;font-size:64px;line-height:1;background:linear-gradient(120deg,#7de8d6,#a3c8ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:14px;font-weight:600;margin-top:18px}
 .dot{width:8px;height:8px;border-radius:50%;background:#2fe4c8}
-.emojibig{font-size:96px;line-height:1;margin:10px 0}
-.avatarcircle{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#2fe4c8,#b24bff);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:36px;color:#050810;margin-bottom:18px}
+.avatarcircle{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#2fe4c8,#b24bff);object-fit:cover;box-shadow:0 0 0 3px rgba(255,255,255,.12);margin-bottom:18px}
 .brandmark{font-family:'Sora',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.01em;background:linear-gradient(120deg,#7de8d6,#c9a3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tapHint{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:12px;color:rgba(242,246,255,.4);letter-spacing:.06em;text-transform:uppercase;z-index:15}
 .confettiLayer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:25}
@@ -42,7 +41,7 @@ body{background:#050810;font-family:'Inter',sans-serif;-webkit-font-smoothing:an
 </style></helmet>
 <div class="backdrop"><div class="glow glow1"></div><div class="glow glow2"></div><div class="glow glow3"></div>
 <div class="stage" onPointerDown="{{ onHoldStart }}" onPointerUp="{{ onHoldEnd }}" onPointerLeave="{{ onHoldEnd }}">
-<div class="barrow"><sc-for list="{{ barWidths }}" as="w" hint-placeholder-count="8"><div class="bar"><i style="width:{{ w.pct }}%"></i></div></sc-for></div>
+<div class="barrow"><sc-for list="{{ barWidths }}" as="w" hint-placeholder-count="6"><div class="bar"><i style="width:{{ w.pct }}%"></i></div></sc-for></div>
 <div class="tapzone tapleft" onClick="{{ goPrev }}"></div>
 <div class="tapzone tapright" onClick="{{ goNext }}"></div>
 
@@ -50,17 +49,13 @@ body{background:#050810;font-family:'Inter',sans-serif;-webkit-font-smoothing:an
 
 <div class="{{ scene1Class }}" data-screen-label="Total messages"><div class="eyebrow">Total activity</div><div class="headline" style="font-size:22px">The ring was loud this week</div><div class="bignum">{{ totalMessagesDisplay }}</div><div class="sub">messages sent across the server</div></div>
 
-<div class="{{ scene2Class }}" data-screen-label="Most active member"><div class="eyebrow">Most active member</div><div class="avatarcircle">{{ mostActiveInitial }}</div><div class="headline" style="font-size:28px">{{ mostActiveName }}</div><div class="pill"><span class="dot"></span>{{ mostActiveDisplay }} messages</div><div class="sub">kept the whole circus running</div></div>
+<div class="{{ scene2Class }}" data-screen-label="Most active member"><div class="eyebrow">Most active member</div><img class="avatarcircle" src="{{ mostActiveAvatar }}" alt="{{ mostActiveName }}"/><div class="headline" style="font-size:28px">{{ mostActiveName }}</div><div class="pill"><span class="dot"></span>{{ mostActiveDisplay }} messages</div><div class="sub">kept the whole circus running</div></div>
 
 <div class="{{ scene3Class }}" data-screen-label="Peak hour"><div class="eyebrow">Peak chaos hour</div><div class="bignum" style="font-size:56px">{{ peakHourLabel }}</div><div class="sub">was when the server was most alive</div></div>
 
 <div class="{{ scene4Class }}" data-screen-label="Busiest day"><div class="eyebrow">Busiest day</div><div class="headline" style="font-size:36px">{{ busiestDayName }}</div><div class="pill"><span class="dot"></span>{{ busiestDayDisplay }} messages</div><div class="sub">the day everyone showed up</div></div>
 
-<div class="{{ scene5Class }}" data-screen-label="Top emoji"><div class="eyebrow">Most-used emoji</div><div class="emojibig">{{ topEmoji }}</div><div class="pill"><span class="dot"></span>used {{ topEmojiDisplay }} times</div></div>
-
-<div class="{{ scene6Class }}" data-screen-label="Most reacted"><div class="eyebrow">Most reacted-to message</div><div class="headline" style="font-size:26px">{{ mostReactedName }}</div><div class="pill"><span class="dot"></span>{{ mostReactedDisplay }} reactions</div><div class="sub">said something the circus couldn't ignore</div></div>
-
-<div class="{{ scene7Class }}" data-screen-label="Outro"><div class="eyebrow">That's a wrap</div><div class="brandmark" style="font-size:30px">{{ serverName }}</div><div class="sub" style="margin-top:20px">See you next week, same big top.</div><button class="replaybtn" onClick="{{ restart }}">Watch again</button></div>
+<div class="{{ scene5Class }}" data-screen-label="Outro"><div class="eyebrow">That's a wrap</div><div class="brandmark" style="font-size:30px">{{ serverName }}</div><div class="sub" style="margin-top:20px">See you next week, same big top.</div><button class="replaybtn" onClick="{{ restart }}">Watch again</button></div>
 
 <div class="confettiLayer"><sc-for list="{{ particles }}" as="p" hint-placeholder-count="0"><div class="confetti" style="left:{{ p.left }}%;width:{{ p.size }}px;height:{{ p.size }}px;background:{{ p.color }};animation-duration:{{ p.dur }}s;animation-delay:{{ p.delay }}s"></div></sc-for></div>
 
@@ -68,19 +63,17 @@ body{background:#050810;font-family:'Inter',sans-serif;-webkit-font-smoothing:an
 </div></div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const DURATIONS=[3200,4600,4600,4200,4400,4200,4600,7000];
+const DURATIONS=[3200,4600,4600,4200,4400,7000];
 const COLORS=['#2fe4c8','#b24bff','#3d8bff','#7de8d6'];
 class Component extends DCLogic{
-  state={current:0,elapsed:0,paused:false,dispTotal:0,dispMost:0,dispDay:0,dispEmoji:0,dispReact:0,particles:[]};
+  state={current:0,elapsed:0,paused:false,dispTotal:0,dispMost:0,dispDay:0,particles:[]};
   data={
     serverName:"THE AMAZING DIGITAL CIRCUS",
     weekLabel:"Week of Jul 6–Jul 12",
-    totalMessages:4821,
-    mostActive:{name:"Pomni",messages:342},
-    peakHour:{label:"9–10 PM"},
-    busiestDay:{day:"Friday",messages:891},
-    topEmoji:{emoji:"😭",uses:156},
-    mostReacted:{name:"Kinger",reactions:89}
+    totalMessages:100,
+    mostActive:{name:"Justi",messages:49,avatar:"https://cdn.discordapp.com/avatars/1309698054433013804/54b1b8686ed0a338f9f5bd1cd1d4ef57.png?size=256"},
+    peakHour:{label:"9–10 AM UTC"},
+    busiestDay:{day:"Saturday",messages:100}
   };
   componentDidMount(){
     this._raf=null;this._last=null;
@@ -119,7 +112,7 @@ class Component extends DCLogic{
     this.setState({particles:list});
   }
   _animateNumbers(){
-    const targets={1:['dispTotal',this.data.totalMessages],2:['dispMost',this.data.mostActive.messages],4:['dispDay',this.data.busiestDay.messages],5:['dispEmoji',this.data.topEmoji.uses],6:['dispReact',this.data.mostReacted.reactions]};
+    const targets={1:['dispTotal',this.data.totalMessages],2:['dispMost',this.data.mostActive.messages],4:['dispDay',this.data.busiestDay.messages]};
     const t=targets[this.state.current];
     if(!t)return;
     const [key,target]=t;
@@ -156,19 +149,15 @@ class Component extends DCLogic{
       weekLabel:this.data.weekLabel,
       totalMessagesDisplay:this.state.dispTotal.toLocaleString(),
       mostActiveName:this.data.mostActive.name,
-      mostActiveInitial:this.data.mostActive.name.charAt(0).toUpperCase(),
+      mostActiveAvatar:this.data.mostActive.avatar,
       mostActiveDisplay:this.state.dispMost.toLocaleString(),
       peakHourLabel:this.data.peakHour.label,
       busiestDayName:this.data.busiestDay.day,
       busiestDayDisplay:this.state.dispDay.toLocaleString(),
-      topEmoji:this.data.topEmoji.emoji,
-      topEmojiDisplay:this.state.dispEmoji.toLocaleString(),
-      mostReactedName:this.data.mostReacted.name,
-      mostReactedDisplay:this.state.dispReact.toLocaleString(),
       barWidths,
       particles:this.state.particles,
       scene0Class:sceneClass(0),scene1Class:sceneClass(1),scene2Class:sceneClass(2),scene3Class:sceneClass(3),
-      scene4Class:sceneClass(4),scene5Class:sceneClass(5),scene6Class:sceneClass(6),scene7Class:sceneClass(7),
+      scene4Class:sceneClass(4),scene5Class:sceneClass(5),
       hintText:cur===DURATIONS.length-1?'Tap to watch again':'Tap to advance • hold to pause',
       goNext:()=>cur===DURATIONS.length-1?this.restart():this.goNext(),goPrev:()=>this.goPrev(),restart:()=>this.restart(),
       onHoldStart:()=>this.onHoldStart(),onHoldEnd:()=>this.onHoldEnd()
