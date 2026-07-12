@@ -1,22 +1,23 @@
 # wrapped
 
-Assets for the weekly Discord "Wrapped" story.
+The weekly Discord "Wrapped" story, as a static page for GitHub Pages.
 
-- `Discord_Wrapped.dc.html` - the Stories-style wrapped video component.
-- `generate_id_cache.py` - one-off script that snapshots current Discord
-  member/channel names into `users.json` / `channels.json`, so the
-  `user_id` / `channel_id` values stored in Supabase's `wrapped_messages`
-  and `wrapped_reactions` tables can be resolved to display names when
-  building a Wrapped. Run it manually, right before building a Wrapped,
-  not as a long-running bot.
+- `index.html` — the whole thing: plain HTML/CSS/vanilla JS, no build step,
+  no external framework or script dependency. Open it directly or serve it
+  as-is. The stats inside are hardcoded, not fetched at runtime.
+- `names.json` — a reference cache of Discord `user_id` -> `{name, avatar}`
+  and `channel_id` -> name, so IDs pulled from Supabase's `wrapped_messages`
+  / `wrapped_reactions` tables can be resolved to real names without having
+  to ask again each time. Not loaded by `index.html` at runtime — it's a
+  lookup used when hand-editing the hardcoded stats for a new week.
 
-## Running the cache generator
+## Updating for a new week
 
-```
-pip install -r requirements.txt
-DISCORD_TOKEN=... DISCORD_GUILD_ID=... python generate_id_cache.py
-```
-
-Requires the Server Members Intent enabled for the bot application in the
-Discord Developer Portal. On success it overwrites `users.json` and
-`channels.json` in this directory with a fresh snapshot and exits.
+1. Query the `wrapped_messages` / `wrapped_reactions` tables in Supabase
+   for the date range you want (total messages, per-user counts, per-hour
+   counts, per-day counts, top emoji, most-reacted message).
+2. Resolve the `user_id` / `channel_id` values via `names.json`. Add any
+   new IDs to `names.json` as you learn their names.
+3. Edit the hardcoded values directly in `index.html` (the `data-count`
+   attributes, the avatar `src`, and the text content in each `.scene`
+   block).
