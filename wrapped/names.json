@@ -1,0 +1,55 @@
+{
+  "users": {
+    "1309698054433013804": {
+      "name": "Justi",
+      "avatar": "https://cdn.discordapp.com/avatars/1309698054433013804/54b1b8686ed0a338f9f5bd1cd1d4ef57.png?size=256"
+    },
+    "1189444696951496768": {
+      "name": "Aidan",
+      "avatar": "https://cdn.discordapp.com/avatars/1189444696951496768/5bc8d136063de291e4fdb8161257ec76.png?size=256"
+    },
+    "1484673165820170323": {
+      "name": "Logan",
+      "avatar": "https://cdn.discordapp.com/avatars/1484673165820170323/e466bfe8a9d59267c7d20ae001dbc2c4.png?size=1024"
+    },
+    "1101789423940681738": {
+      "name": "Sy",
+      "avatar": "https://cdn.discordapp.com/avatars/1101789423940681738/c8796ead4c43e9ed7f8cfadf18e002fd.png?size=1024"
+    },
+    "794832846228684800": {
+      "name": "Lucas",
+      "avatar": "https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=1024"
+    },
+    "1455392169006334063": {
+      "name": "Alex R",
+      "avatar": "https://cdn.discordapp.com/avatars/1455392169006334063/231714f766bcdf6070d324ea69ef7e0b.png?size=1024"
+    }
+  },
+  "channels": {
+    "1467064096238080001": "Rules channel",
+    "1467062514981539942": "announcements",
+    "1498626177936527441": "server-updates",
+    "1494588552271368405": "VA announcements",
+    "1525355950851100804": "auto-roles",
+    "1467068195084173377": "birthdays",
+    "1495304033978810398": "who owes who money",
+    "1479030334229184554": "mod-chat",
+    "1499370988314300558": "tadc-group-cosplay",
+    "1488128280212144300": "Comiccon-and-events",
+    "1488783605281853562": "comiccon-and-events-important",
+    "1498683851570937917": "tadc-group-cosplay-planning",
+    "1518541673288700014": "hangouts-will-delete",
+    "1467062176698335294": "chat (main chat)",
+    "1467062176698335296": "music",
+    "1492503610410401822": "quotes",
+    "1498233164395577354": "the-Justi-cave",
+    "1514187349050003487": "rat-cave",
+    "1505889123494527096": "fandom-trash",
+    "1497479717119590520": "suggestion-box",
+    "1467062176698335295": "media-and-links",
+    "1467063480572973140": "artworks and ideas",
+    "1467079653679173730": "hearmeouts",
+    "1489524156008763433": "pics",
+    "1510178693442437131": "war-room"
+  }
+}
