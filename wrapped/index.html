@@ -32,6 +32,7 @@ body{margin:0;background:#050810;font-family:'Inter',sans-serif;-webkit-font-smo
 .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:14px;font-weight:600;margin-top:18px}
 .dot{width:8px;height:8px;border-radius:50%;background:#2fe4c8}
 .avatarcircle{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#2fe4c8,#b24bff);object-fit:cover;box-shadow:0 0 0 3px rgba(255,255,255,.12);margin-bottom:18px}
+.emojiimg{width:112px;height:112px;object-fit:contain;margin:10px 0}
 .brandmark{font-family:'Sora',sans-serif;font-weight:800;font-size:26px;letter-spacing:-.01em;background:linear-gradient(120deg,#7de8d6,#c9a3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tapHint{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:12px;color:rgba(242,246,255,.4);letter-spacing:.06em;text-transform:uppercase;z-index:15;pointer-events:none}
 .confettiLayer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:25}
@@ -85,7 +86,8 @@ body{margin:0;background:#050810;font-family:'Inter',sans-serif;-webkit-font-smo
 
     <div class="scene" data-index="5">
       <div class="eyebrow">Most-used emoji</div>
-      <div class="headline" style="font-size:44px">:alecsa:</div>
+      <img class="emojiimg" src="https://cdn.discordapp.com/emojis/1494937365008089244.webp?size=240" alt=":alecsa:">
+      <div class="sub" style="margin-top:2px">:alecsa:</div>
       <div class="pill"><span class="dot"></span><span data-count="39">0</span> times</div>
       <div class="sub">the server's signature reaction</div>
     </div>
