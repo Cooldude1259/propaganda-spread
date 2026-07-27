@@ -46,18 +46,20 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
 .confetti{position:absolute;top:-24px;animation:confettiFall linear forwards}
 @keyframes confettiFall{to{transform:translateY(780px) rotate(420deg);opacity:0}}
 .replaybtn{margin-top:24px;padding:12px 28px;border-radius:4px;background:linear-gradient(90deg,#ff6fa5,#ffd166);color:#201040;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer}
-/* duel */
-.duelrow{display:flex;align-items:flex-start;justify-content:center;gap:26px;margin:16px 0 4px}
-.duelist{display:flex;flex-direction:column;align-items:center;gap:8px;width:110px}
-.duelist img{width:84px;height:84px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,#ff6fa5,#8f6bff)}
-.duelist.pink img{box-shadow:0 0 0 3px #ff6fa5,0 0 24px rgba(255,111,165,.4)}
-.duelist.teal img{box-shadow:0 0 0 3px #4de3c0,0 0 24px rgba(77,227,192,.4)}
-.duelist .dname{font-family:'Abril Fatface',serif;font-size:19px}
-.duelist .dscore{font-size:13px;font-weight:800;color:#ffd166}
-.vsmark{font-family:'Abril Fatface',serif;font-size:24px;color:rgba(253,246,255,.5);margin-top:28px}
-.tugtrack{width:min(78%,260px);height:12px;border-radius:6px;overflow:hidden;display:flex;margin-top:20px;background:rgba(255,255,255,.08)}
-.tugtrack .tugA{height:100%;background:linear-gradient(90deg,#ff6fa5,#ff9fc4);width:50%;transition:width 1.4s cubic-bezier(.22,1,.36,1)}
-.tugtrack .tugB{height:100%;background:#4de3c0;flex:1}
+/* leaderboard */
+.board{display:flex;flex-direction:column;gap:11px;width:min(100%,304px);margin:16px 0 2px}
+.brow{display:flex;align-items:center;gap:9px}
+.brow img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,#ff6fa5,#8f6bff);flex:none}
+.brow .bname{font-weight:800;font-size:13px;width:50px;text-align:left;flex:none}
+.btrack{flex:1;height:15px;border-radius:8px;background:rgba(255,255,255,.07);overflow:hidden}
+.btrack i{display:block;height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#4de3c0,#2fb99a);transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.brow.lead .btrack i{background:linear-gradient(90deg,#ffd166,#ff6fa5)}
+.brow.lead img{box-shadow:0 0 0 2px #ffd166,0 0 16px rgba(255,209,102,.45)}
+.brow.fell .btrack i{background:linear-gradient(90deg,#8f6bff,#6b4fd8)}
+.brow .bnum{font-size:12px;font-weight:800;color:#ffd166;width:26px;text-align:right;flex:none}
+.brow .bmove{font-size:10px;font-weight:800;width:22px;text-align:left;flex:none}
+.bmove.down{color:#ff6fa5}
+.bmove.up{color:#4de3c0}
 /* week chart */
 .weekchart{display:flex;align-items:flex-end;justify-content:center;gap:18px;height:150px;margin:18px 0 4px}
 .wcol{display:flex;flex-direction:column;align-items:center;gap:8px;width:44px;height:100%;justify-content:flex-end}
@@ -80,83 +82,79 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
     <button class="tapzone tapright" id="tapNext" aria-label="Next"></button>
 
     <div class="scene active" data-index="0">
-      <div class="eyebrow">Week of Jul 11–Jul 17</div>
+      <div class="eyebrow">Week of Jul 18–Jul 24</div>
       <div class="brandmark">THE AMAZING DIGITAL CIRCUS</div>
       <h1 class="headline" style="font-size:42px;margin-top:16px">Step Right Up</h1>
       <div class="ornament">✦ ✦ ✦</div>
-      <div class="sub">One tent. Six regulars. A rivalry nobody planned.<br>This is your week, wrapped.</div>
+      <div class="sub">Last week had its champions.<br>This week had other plans.</div>
     </div>
 
     <div class="scene" data-index="1">
       <div class="act">Act I</div>
       <div class="eyebrow">The roar of the crowd</div>
-      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="482">0</div></div>
+      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="355">0</div></div>
       <div class="sub">messages shouted from the stands</div>
-      <div class="pill"><span class="dot"></span><span data-count="131">0</span> reactions thrown into the ring</div>
+      <div class="pill"><span class="dot"></span><span data-count="21">0</span> reactions thrown into the ring</div>
     </div>
 
     <div class="scene" data-index="2">
       <div class="act">Act II</div>
-      <div class="eyebrow">The main event</div>
-      <div class="duelrow">
-        <div class="duelist pink">
-          <img src="https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=256" alt="Lucas">
-          <span class="dname">Lucas</span>
-          <span class="dscore"><span data-count="157">0</span> msgs</span>
+      <div class="eyebrow">The changing of the guard</div>
+      <div class="board">
+        <div class="brow lead">
+          <img src="https://cdn.discordapp.com/avatars/1484673165820170323/e466bfe8a9d59267c7d20ae001dbc2c4.png?size=256" alt="Logan">
+          <span class="bname">Logan</span>
+          <span class="btrack"><i data-grow-w="100"></i></span>
+          <span class="bnum" data-count="112">0</span><span class="bmove up">▲2</span>
         </div>
-        <div class="vsmark">vs</div>
-        <div class="duelist teal">
+        <div class="brow">
+          <img src="https://cdn.discordapp.com/avatars/1189444696951496768/5bc8d136063de291e4fdb8161257ec76.png?size=256" alt="Aidan">
+          <span class="bname">Aidan</span>
+          <span class="btrack"><i data-grow-w="72"></i></span>
+          <span class="bnum" data-count="81">0</span><span class="bmove up">▲2</span>
+        </div>
+        <div class="brow fell">
+          <img src="https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=256" alt="Lucas">
+          <span class="bname">Lucas</span>
+          <span class="btrack"><i data-grow-w="62"></i></span>
+          <span class="bnum" data-count="69">0</span><span class="bmove down">▼2</span>
+        </div>
+        <div class="brow fell">
           <img src="https://cdn.discordapp.com/avatars/1309698054433013804/54b1b8686ed0a338f9f5bd1cd1d4ef57.png?size=256" alt="Justi">
-          <span class="dname">Justi</span>
-          <span class="dscore"><span data-count="141">0</span> msgs</span>
+          <span class="bname">Justi</span>
+          <span class="btrack"><i data-grow-w="54"></i></span>
+          <span class="bnum" data-count="60">0</span><span class="bmove down">▼2</span>
         </div>
       </div>
-      <div class="tugtrack"><div class="tugA" data-grow-w="52.7"></div><div class="tugB"></div></div>
-      <div class="sub">Sixteen messages apart. <b>That's the whole margin.</b></div>
+      <div class="sub">Last week's headline duo finished <b>third and fourth.</b> <b>Logan</b> just walked in and took the tent.</div>
     </div>
 
     <div class="scene" data-index="3">
       <div class="act">Act III</div>
-      <div class="eyebrow">The plot twist</div>
-      <div class="headline" style="font-size:30px">The duel followed<br>them everywhere</div>
-      <div class="sub" style="margin-top:18px">Reactions given this week:<br><b>Lucas — 58. Justi — 57.</b></div>
-      <div class="pill"><span class="dot"></span>one reaction apart</div>
-      <div class="sub">They can't even agree to lose differently.</div>
+      <div class="eyebrow">The one-night stand</div>
+      <div class="weekchart">
+        <div class="wcol peak"><span class="wcount" data-count="290">0</span><div class="wbar" data-grow-h="100"></div><span class="wlabel">SAT</span></div>
+        <div class="wcol"><span class="wcount" data-count="4">0</span><div class="wbar" data-grow-h="2"></div><span class="wlabel">SUN</span></div>
+        <div class="wcol"><span class="wcount" data-count="47">0</span><div class="wbar" data-grow-h="17"></div><span class="wlabel">MON</span></div>
+        <div class="wcol"><span class="wcount" data-count="14">0</span><div class="wbar" data-grow-h="5"></div><span class="wlabel">TUE</span></div>
+      </div>
+      <div class="sub"><b>82%</b> of the entire week happened on one Saturday, peaking 10–11 AM UTC.</div>
+      <div class="pill"><span class="dot"></span>Sunday managed 4 messages</div>
     </div>
 
     <div class="scene" data-index="4">
       <div class="act">Act IV</div>
-      <div class="eyebrow">The rise and the fall</div>
-      <div class="weekchart">
-        <div class="wcol"><span class="wcount" data-count="98">0</span><div class="wbar" data-grow-h="44"></div><span class="wlabel">SAT</span></div>
-        <div class="wcol peak"><span class="wcount" data-count="224">0</span><div class="wbar" data-grow-h="100"></div><span class="wlabel">SUN</span></div>
-        <div class="wcol"><span class="wcount" data-count="140">0</span><div class="wbar" data-grow-h="63"></div><span class="wlabel">MON</span></div>
-        <div class="wcol"><span class="wcount" data-count="20">0</span><div class="wbar" data-grow-h="9"></div><span class="wlabel">TUE</span></div>
-      </div>
-      <div class="sub"><b>Sunday</b> the tent nearly came down — peaking 12–1 PM UTC. By Tuesday, tumbleweeds.</div>
+      <div class="eyebrow">The regime wobbles</div>
+      <div class="sunwrap"><div class="sunburst"></div><img class="emojiimg" src="https://cdn.discordapp.com/emojis/1494937365008089244.webp?size=240" alt=":alecsa:"></div>
+      <div class="pill"><span class="dot"></span>still #1 — but only <span data-count="7">0</span> of 21</div>
+      <div class="sub">It ruled <b>85%</b> of last week's reactions. This week: <b>33%.</b> The crown is slipping.</div>
     </div>
 
     <div class="scene" data-index="5">
-      <div class="act">Act V</div>
-      <div class="eyebrow">The one ring</div>
-      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="94">0</div></div>
-      <div class="sub" style="margin-top:2px">percent of everything happened in <b>#chat</b></div>
-      <div class="sub">453 of 482 messages, one channel.<br>The side rings never stood a chance.</div>
-    </div>
-
-    <div class="scene" data-index="6">
-      <div class="act">Act VI</div>
-      <div class="eyebrow">The regime</div>
-      <div class="sunwrap"><div class="sunburst"></div><img class="emojiimg" src="https://cdn.discordapp.com/emojis/1494937365008089244.webp?size=240" alt=":alecsa:"></div>
-      <div class="pill"><span class="dot"></span><span data-count="111">0</span> of 131 reactions were :alecsa:</div>
-      <div class="sub">85% of everything. Not a trend — <b>a regime.</b></div>
-    </div>
-
-    <div class="scene" data-index="7">
       <div class="eyebrow">Curtain call</div>
       <div class="brandmark" style="font-size:30px">THE AMAZING DIGITAL CIRCUS</div>
       <div class="ornament">✦ ✦ ✦</div>
-      <div class="sub" style="margin-top:14px">The lights dim, the confetti settles.<br>Same big top next week.</div>
+      <div class="sub" style="margin-top:14px">New champion, same big top.<br>Your move, Lucas.</div>
       <button class="replaybtn" id="replayBtn">Encore</button>
     </div>
 
@@ -167,7 +165,7 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
 
 <script>
 (function(){
-  const DURATIONS = [3600, 4400, 5400, 4800, 5200, 4600, 4600, 7000];
+  const DURATIONS = [3600, 4400, 6000, 5400, 5000, 7000];
   const COLORS = ['#ff6fa5', '#ffd166', '#4de3c0', '#8f6bff'];
 
   const stage = document.getElementById('stage');
@@ -217,7 +215,7 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
     });
     sceneEl.querySelectorAll('[data-grow-w]').forEach((el) => {
       el.style.transition = 'none';
-      el.style.width = '50%';
+      el.style.width = '0%';
       requestAnimationFrame(() => requestAnimationFrame(() => {
         el.style.transition = '';
         el.style.width = el.getAttribute('data-grow-w') + '%';
