@@ -78,6 +78,18 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
 .runner.a{background:#4de3c0;color:#0e0820;left:0}
 .runner.b{background:#ffd166;color:#0e0820}
 .tinylabel{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(253,246,255,.45);font-weight:800}
+.stamp{font-family:'Abril Fatface',serif;font-size:58px;line-height:1;background:linear-gradient(120deg,#4de3c0,#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent;margin:4px 0}
+.stampday{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:rgba(253,246,255,.5)}
+.serverlogo{width:132px;height:132px;border-radius:16px;object-fit:cover;box-shadow:0 0 0 2px rgba(77,227,192,.55),0 0 30px rgba(77,227,192,.25);margin:6px 0 10px}
+.tline{display:flex;flex-direction:column;gap:0;width:min(100%,290px);margin:14px 0 2px;text-align:left}
+.tstep{display:flex;gap:11px;align-items:flex-start}
+.tstep .tdot{flex:none;width:11px;height:11px;border-radius:50%;background:#4de3c0;margin-top:4px;position:relative}
+.tstep.final .tdot{background:#ffd166;box-shadow:0 0 12px rgba(255,209,102,.6)}
+.tstep .tdot::after{content:'';position:absolute;left:50%;top:11px;width:2px;height:26px;background:rgba(255,255,255,.16);transform:translateX(-50%)}
+.tstep:last-child .tdot::after{display:none}
+.tstep .tbody{padding-bottom:16px}
+.tstep .ttime{font-size:11px;font-weight:800;letter-spacing:.08em;color:#ffd166}
+.tstep .ttext{font-size:13px;color:rgba(253,246,255,.75);line-height:1.4}
 /* week chart */
 .weekchart{display:flex;align-items:flex-end;justify-content:center;gap:18px;height:150px;margin:18px 0 4px}
 .wcol{display:flex;flex-direction:column;align-items:center;gap:8px;width:44px;height:100%;justify-content:flex-end}
@@ -100,32 +112,83 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
     <button class="tapzone tapright" id="tapNext" aria-label="Next"></button>
 
     <div class="scene active" data-index="0">
-      <div class="eyebrow">A second tent has opened</div>
-      <div class="brandmark">THE RACE BEGINS</div>
-      <h1 class="headline" style="font-size:40px;margin-top:16px">Two Rings,<br>One Circuit</h1>
+      <div class="eyebrow">Jul 11 – Aug 25</div>
+      <div class="brandmark">THE AMAZING DIGITAL CIRCUS</div>
+      <h1 class="headline" style="font-size:36px;margin-top:16px">How A Saturday<br>Became A Server</h1>
       <div class="ornament">✦ ✦ ✦</div>
-      <div class="sub">The bot just walked into <b>Twink SMP</b>.<br>Let's see how the newcomer measures up.</div>
+      <div class="sub">Nobody planned this one. It just happened.</div>
     </div>
 
     <div class="scene" data-index="1">
       <div class="act">Act I</div>
-      <div class="eyebrow">The reigning champion</div>
+      <div class="eyebrow">The tent, before</div>
       <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="845">0</div></div>
-      <div class="sub">messages, <b>45 days</b> of history, 11 regulars, 11 rings</div>
-      <div class="pill"><span class="dot"></span>best night ever: <span data-count="290">0</span> messages</div>
+      <div class="sub">messages across <b>45 days</b> — eleven regulars, eleven rings, business as usual.</div>
+      <div class="pill"><span class="dot"></span>and then came July 18th</div>
     </div>
 
     <div class="scene" data-index="2">
       <div class="act">Act II</div>
-      <div class="eyebrow">The challenger</div>
-      <div class="brandmark" style="font-size:22px;margin-bottom:4px">TWINK SMP</div>
-      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="7">0</div></div>
-      <div class="sub">messages. Two members. One channel.</div>
-      <div class="pill"><span class="dot"></span>all of it inside <b>60 seconds</b></div>
+      <div class="eyebrow">It starts with a thread</div>
+      <div class="stampday">Saturday 18 July</div>
+      <div class="stamp">09:46</div>
+      <div class="sub">Three people, one thread,<br><b>11 messages in 7 minutes.</b></div>
+      <div class="pill"><span class="dot"></span>nobody knew what they'd started</div>
     </div>
 
     <div class="scene" data-index="3">
       <div class="act">Act III</div>
+      <div class="eyebrow">28 minutes later</div>
+      <div class="headline" style="font-size:30px">#minecraft</div>
+      <div class="board" style="margin-top:14px">
+        <div class="brow lead">
+          <img src="https://cdn.discordapp.com/avatars/1484673165820170323/e466bfe8a9d59267c7d20ae001dbc2c4.png?size=256" alt="Logan">
+          <span class="bname">Logan</span>
+          <span class="btrack"><i data-grow-w="100"></i></span>
+          <span class="bnum" data-count="93">0</span>
+        </div>
+        <div class="brow">
+          <img src="https://cdn.discordapp.com/avatars/1189444696951496768/5bc8d136063de291e4fdb8161257ec76.png?size=256" alt="Aidan">
+          <span class="bname">Aidan</span>
+          <span class="btrack"><i data-grow-w="70"></i></span>
+          <span class="bnum" data-count="65">0</span>
+        </div>
+        <div class="brow">
+          <img src="https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=256" alt="Lucas">
+          <span class="bname">Lucas</span>
+          <span class="btrack"><i data-grow-w="42"></i></span>
+          <span class="bnum" data-count="39">0</span>
+        </div>
+        <div class="brow">
+          <img src="https://cdn.discordapp.com/avatars/1309698054433013804/54b1b8686ed0a338f9f5bd1cd1d4ef57.png?size=256" alt="Justi">
+          <span class="bname">Justi</span>
+          <span class="btrack"><i data-grow-w="35"></i></span>
+          <span class="bnum" data-count="33">0</span>
+        </div>
+      </div>
+      <div class="sub"><b>250 messages</b> in three days. Jude and That Duck Guy piled in too.</div>
+    </div>
+
+    <div class="scene" data-index="4">
+      <div class="act">Act IV</div>
+      <div class="eyebrow">Total takeover</div>
+      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="217">0</div></div>
+      <div class="sub">of that Saturday's <b>290</b> messages were about Minecraft.</div>
+      <div class="pill"><span class="dot"></span>75% of the day, one topic</div>
+    </div>
+
+    <div class="scene" data-index="5">
+      <div class="act">Act V</div>
+      <div class="eyebrow">38 days later</div>
+      <img class="serverlogo" src="https://cdn.discordapp.com/attachments/1505889123494527096/1541765458061955113/Group_2.png?ex=6a8ec879&amp;is=6a8d76f9&amp;hm=b06cda5d2632fc87e2db4c680ec0b340d134e4d04913c574ee2c314526b2e88e&amp;" alt="Twink SMP" onerror="this.style.display='none'">
+      <div class="headline" style="font-size:28px">TWINK SMP</div>
+      <div class="sub" style="margin-top:12px">A thread became a channel.<br>A channel became <b>a whole server.</b></div>
+      <div class="sub" style="margin-top:10px">Founding members: <b>Lucas &amp; monoplast</b></div>
+      <div class="pill"><span class="dot"></span><span data-count="7">0</span> messages in 60 seconds</div>
+    </div>
+
+    <div class="scene" data-index="6">
+      <div class="act">Act VI</div>
       <div class="eyebrow">The scoreboard</div>
       <div class="vsgrid">
         <div class="vscard champ">
@@ -145,31 +208,14 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
         <div class="runner a">🐣</div>
         <div class="runner b" data-grow-l="100">👑</div>
       </div>
-      <div class="sub">The challenger is <b>0.8%</b> of the way there. Give it time.</div>
+      <div class="sub">0.8% of the way there — but it isn't really a rival. <b>It's the Circus's own kid.</b></div>
     </div>
 
-    <div class="scene" data-index="4">
-      <div class="act">Act IV</div>
-      <div class="eyebrow">But today…</div>
-      <div class="headline" style="font-size:30px">Today's score:<br>7 – 0</div>
-      <div class="sub" style="margin-top:16px"><b>Twink SMP</b> said seven things.<br>The Circus said <b>nothing at all.</b></div>
-      <div class="pill"><span class="dot"></span>the underdog leads on the day</div>
-    </div>
-
-    <div class="scene" data-index="5">
-      <div class="act">Act V</div>
-      <div class="eyebrow">The double agent</div>
-      <img class="avatarcircle" src="https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=256" alt="Lucas">
-      <div class="headline" style="font-size:26px">Lucas</div>
-      <div class="sub" style="margin-top:14px">Top talker in The Circus with <b>226</b>.<br>Also 4 of Twink SMP's 7.</div>
-      <div class="pill"><span class="dot"></span>playing for both teams</div>
-    </div>
-
-    <div class="scene" data-index="6">
+    <div class="scene" data-index="7">
       <div class="eyebrow">Curtain call</div>
-      <div class="brandmark" style="font-size:28px">TWO RINGS, ONE CIRCUIT</div>
+      <div class="brandmark" style="font-size:26px">A THREAD → A CHANNEL → A SERVER</div>
       <div class="ornament">✦ ✦ ✦</div>
-      <div class="sub" style="margin-top:14px">845 to 7. The gap has never been wider,<br>and the race has never been younger.</div>
+      <div class="sub" style="margin-top:14px">Thirty-eight days, start to finish.<br>The circus grew a second ring.</div>
       <button class="replaybtn" id="replayBtn">Encore</button>
     </div>
 
@@ -180,7 +226,7 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
 
 <script>
 (function(){
-  const DURATIONS = [3800, 4800, 4800, 6200, 5000, 5200, 7000];
+  const DURATIONS = [4000, 4800, 5200, 6400, 4800, 5800, 6000, 7000];
   const COLORS = ['#ff6fa5', '#ffd166', '#4de3c0', '#8f6bff'];
 
   const stage = document.getElementById('stage');
