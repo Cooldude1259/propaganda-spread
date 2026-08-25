@@ -18,12 +18,19 @@
     },
     "794832846228684800": {
       "name": "Lucas",
+      "display_name": "Lucas (EN Jax)",
       "avatar": "https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=1024"
     },
     "1455392169006334063": {
       "name": "Alex R",
       "avatar": "https://cdn.discordapp.com/avatars/1455392169006334063/231714f766bcdf6070d324ea69ef7e0b.png?size=1024"
-    }
+    },
+    "903834956147597395": { "name": "Jude", "display_name": "Jude (EN GloinkQueen)" },
+    "1363425718565863515": { "name": "That Duck Guy" },
+    "1466328218675056742": { "name": "Louis", "display_name": "Louis (◉SNAKEFRIES◉)" },
+    "1471760080650109033": { "name": "Andy", "display_name": "Andy e.g Roblox kid" },
+    "1234778227675889684": { "name": "Elliot", "display_name": "Elliot ( A BEAN)" },
+    "1514156781637468174": { "name": "monoplast", "note": "Twink SMP member" }
   },
   "channels": {
     "1467064096238080001": "Rules channel",
@@ -50,6 +57,14 @@
     "1467063480572973140": "artworks and ideas",
     "1467079653679173730": "hearmeouts",
     "1489524156008763433": "pics",
-    "1510178693442437131": "war-room"
+    "1510178693442437131": "war-room",
+    "1527981215808749649": "minecraft",
+    "1527992839391281243": "minecraft-server",
+    "1527974859743952956": "(unnamed thread, Jul 18)",
+    "1530474341739925516": "general (Twink SMP)"
+  },
+  "guilds": {
+    "1467062175494443245": "The Amazing Digital Circus",
+    "1530474340565651566": "Twink SMP"
   }
 }
