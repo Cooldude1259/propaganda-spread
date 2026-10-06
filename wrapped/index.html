@@ -90,6 +90,22 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
 .tstep .tbody{padding-bottom:16px}
 .tstep .ttime{font-size:11px;font-weight:800;letter-spacing:.08em;color:#ffd166}
 .tstep .ttext{font-size:13px;color:rgba(253,246,255,.75);line-height:1.4}
+.lifechart{display:flex;align-items:flex-end;gap:2px;height:140px;width:min(100%,300px);margin:16px 0 4px}
+.lifechart .lbar{flex:1;min-height:2px;border-radius:2px 2px 0 0;background:linear-gradient(180deg,#4de3c0,#2fb99a);height:0;transition:height 1.1s cubic-bezier(.22,1,.36,1)}
+.lifechart .lbar.peak{background:linear-gradient(180deg,#ffe9a8,#ffd166);box-shadow:0 0 14px rgba(255,209,102,.5)}
+.lifechart .lbar.dead{background:#ff6fa5;opacity:.55}
+.chartaxis{display:flex;justify-content:space-between;width:min(100%,300px);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(253,246,255,.42);font-weight:800}
+.statrow{display:flex;justify-content:center;gap:10px;margin:16px 0 2px;width:100%}
+.statbox{flex:1;max-width:92px;padding:12px 6px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;gap:3px}
+.statbox .sv{font-family:'Abril Fatface',serif;font-size:26px;line-height:1;color:#ffd166}
+.statbox .sl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,246,255,.55);font-weight:800;text-align:center}
+.twostamp{display:flex;align-items:center;justify-content:center;gap:14px;margin:10px 0 2px}
+.twostamp .ts{display:flex;flex-direction:column;align-items:center;gap:3px}
+.twostamp .tsv{font-family:'Abril Fatface',serif;font-size:30px;line-height:1}
+.twostamp .ts.born .tsv{color:#4de3c0}
+.twostamp .ts.gone .tsv{color:#ff6fa5}
+.twostamp .tsl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:rgba(253,246,255,.5)}
+.twostamp .tsarrow{font-size:18px;color:rgba(253,246,255,.35);margin-top:-10px}
 /* week chart */
 .weekchart{display:flex;align-items:flex-end;justify-content:center;gap:18px;height:150px;margin:18px 0 4px}
 .wcol{display:flex;flex-direction:column;align-items:center;gap:8px;width:44px;height:100%;justify-content:flex-end}
@@ -112,113 +128,129 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
     <button class="tapzone tapright" id="tapNext" aria-label="Next"></button>
 
     <div class="scene active" data-index="0">
-      <div class="eyebrow">Jul 11 – Aug 25</div>
-      <div class="brandmark">THE AMAZING DIGITAL CIRCUS</div>
-      <h1 class="headline" style="font-size:36px;margin-top:16px">How A Saturday<br>Emptied The Tent</h1>
+      <div class="eyebrow">11 July – 6 October</div>
+      <div class="brandmark">THREE TENTS, ONE CROWD</div>
+      <h1 class="headline" style="font-size:38px;margin-top:16px">The Handover</h1>
       <div class="ornament">✦ ✦ ✦</div>
-      <div class="sub">Nobody planned this one. It just happened.</div>
+      <div class="sub">A server was born, burned bright, and died.<br>Another opened before it was cold.</div>
     </div>
 
     <div class="scene" data-index="1">
       <div class="act">Act I</div>
-      <div class="eyebrow">The tent, before</div>
-      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="847">0</div></div>
-      <div class="sub">messages across <b>45 days</b> — eleven regulars, eleven rings, business as usual.</div>
-      <div class="pill"><span class="dot"></span>and then came July 18th</div>
+      <div class="eyebrow">It was never small</div>
+      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="3328">0</div></div>
+      <div class="sub">messages in <b>Twink SMP</b> — thirteen people, seventeen channels.</div>
+      <div class="pill"><span class="dot"></span>last time we looked, it had eight</div>
     </div>
 
     <div class="scene" data-index="2">
       <div class="act">Act II</div>
-      <div class="eyebrow">It starts with a thread</div>
-      <div class="stampday">Saturday 18 July</div>
-      <div class="stamp">09:46</div>
-      <div class="sub">Three people, one thread,<br><b>11 messages in 7 minutes.</b></div>
-      <div class="pill"><span class="dot"></span>nobody knew what they'd started</div>
+      <div class="eyebrow">A whole life in 37 days</div>
+      <div class="lifechart">
+        <div class="lbar" data-grow-h="1.8"></div>
+        <div class="lbar" data-grow-h="5.8"></div>
+        <div class="lbar" data-grow-h="11.2"></div>
+        <div class="lbar" data-grow-h="28.2"></div>
+        <div class="lbar" data-grow-h="19.9"></div>
+        <div class="lbar" data-grow-h="5.3"></div>
+        <div class="lbar" data-grow-h="17.3"></div>
+        <div class="lbar peak" data-grow-h="100.0"></div>
+        <div class="lbar" data-grow-h="27.8"></div>
+        <div class="lbar" data-grow-h="23.4"></div>
+        <div class="lbar" data-grow-h="17.7"></div>
+        <div class="lbar" data-grow-h="2.3"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar" data-grow-h="1.2"></div>
+        <div class="lbar dead" data-grow-h="1.4"></div>
+        <div class="lbar dead" data-grow-h="1.2"></div>
+        <div class="lbar dead" data-grow-h="1.2"></div>
+      </div>
+      <div class="chartaxis"><span>25 Aug</span><span>3 Sep</span><span>30 Sep</span></div>
+      <div class="sub" style="margin-top:12px">Born, peaked, collapsed, gone. <b>The gold bar is 3 September.</b></div>
     </div>
 
     <div class="scene" data-index="3">
       <div class="act">Act III</div>
-      <div class="eyebrow">28 minutes later</div>
-      <div class="headline" style="font-size:30px">#minecraft</div>
-      <div class="board" style="margin-top:14px">
-        <div class="brow lead">
-          <img src="https://cdn.discordapp.com/avatars/1484673165820170323/e466bfe8a9d59267c7d20ae001dbc2c4.png?size=256" alt="Logan">
-          <span class="bname">Logan</span>
-          <span class="btrack"><i data-grow-w="100"></i></span>
-          <span class="bnum" data-count="93">0</span>
-        </div>
-        <div class="brow">
-          <img src="https://cdn.discordapp.com/avatars/1189444696951496768/5bc8d136063de291e4fdb8161257ec76.png?size=256" alt="Aidan">
-          <span class="bname">Aidan</span>
-          <span class="btrack"><i data-grow-w="70"></i></span>
-          <span class="bnum" data-count="65">0</span>
-        </div>
-        <div class="brow">
-          <img src="https://cdn.discordapp.com/avatars/794832846228684800/b4ee8ae3551e0ff9190962d57d75407e.png?size=256" alt="Lucas">
-          <span class="bname">Lucas</span>
-          <span class="btrack"><i data-grow-w="42"></i></span>
-          <span class="bnum" data-count="39">0</span>
-        </div>
-        <div class="brow">
-          <img src="https://cdn.discordapp.com/avatars/1309698054433013804/54b1b8686ed0a338f9f5bd1cd1d4ef57.png?size=256" alt="Justi">
-          <span class="bname">Justi</span>
-          <span class="btrack"><i data-grow-w="35"></i></span>
-          <span class="bnum" data-count="33">0</span>
-        </div>
-      </div>
-      <div class="sub"><b>250 messages</b> in three days. Jude and That Duck Guy piled in too.</div>
+      <div class="eyebrow">The best day it ever had</div>
+      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="1243">0</div></div>
+      <div class="sub">messages on <b>3 September</b> — from just <b>nine people.</b></div>
+      <div class="pill"><span class="dot"></span>138 messages each</div>
     </div>
 
     <div class="scene" data-index="4">
       <div class="act">Act IV</div>
-      <div class="eyebrow">Total takeover</div>
-      <div class="sunwrap"><div class="sunburst"></div><div class="bignum" data-count="217">0</div></div>
-      <div class="sub">of that Saturday's <b>290</b> messages were about Minecraft.</div>
-      <div class="pill"><span class="dot"></span>75% of the day, one topic</div>
+      <div class="eyebrow">Then the floor fell out</div>
+      <div class="statrow">
+        <div class="statbox"><span class="sv" data-count="220">0</span><span class="sl">Sun 6 Sep</span></div>
+        <div class="statbox"><span class="sv" data-count="28">0</span><span class="sl">Mon 7 Sep</span></div>
+        <div class="statbox"><span class="sv" data-count="1">0</span><span class="sl">by 14 Sep</span></div>
+      </div>
+      <div class="sub" style="margin-top:14px"><b>87% gone overnight.</b> It never recovered — just a long quiet tail to the end.</div>
     </div>
 
     <div class="scene" data-index="5">
       <div class="act">Act V</div>
-      <div class="eyebrow">And then — nothing</div>
-      <div class="bignum" style="font-size:80px" data-count="29">0</div>
-      <div class="tinylabel" style="margin-top:2px">days of total silence</div>
-      <div class="racetrack" style="height:20px;margin:16px 0 6px"><div class="rline" style="top:8px"></div></div>
-      <div class="sub"><b>22 July → 19 August.</b> Not one message in the whole server. The tent didn't wind down — it emptied.</div>
+      <div class="eyebrow">28 September, 11:13am</div>
+      <div class="twostamp">
+        <div class="ts born"><span class="tsv">11:13:34</span><span class="tsl">FF SMP's first</span></div>
+        <div class="tsarrow">→</div>
+        <div class="ts gone"><span class="tsv">11:14:21</span><span class="tsl">The Circus's last</span></div>
+      </div>
+      <div class="sub" style="margin-top:14px">Forty-seven seconds apart. The old tent spoke for the final time <b>just after the new one opened.</b></div>
+      <div class="pill"><span class="dot"></span>it has not said a word since</div>
     </div>
 
     <div class="scene" data-index="6">
       <div class="act">Act VI</div>
-      <div class="eyebrow">Because everyone was here</div>
-      <img class="serverlogo" src="https://cdn.discordapp.com/attachments/1505889123494527096/1541765458061955113/Group_2.png?ex=6a8ec879&amp;is=6a8d76f9&amp;hm=b06cda5d2632fc87e2db4c680ec0b340d134e4d04913c574ee2c314526b2e88e&amp;" alt="Twink SMP" onerror="this.style.display='none'">
-      <div class="headline" style="font-size:28px">TWINK SMP</div>
-      <div class="sub" style="margin-top:12px">Founded by <b>Lucas</b>, alone.<br>A thread became a channel became <b>a whole server.</b></div>
+      <div class="eyebrow">Twink SMP, last words</div>
+      <div class="stampday">Wednesday 30 September</div>
+      <div class="stamp">23:41</div>
+      <div class="sub">Nineteen minutes before October.<br><b>3,328 messages. Thirty-seven days.</b></div>
     </div>
 
     <div class="scene" data-index="7">
       <div class="act">Act VII</div>
-      <div class="eyebrow">The scoreboard, honestly</div>
-      <div class="vsgrid">
-        <div class="vscard champ">
-          <span class="vslabel">The Circus</span>
-          <span class="vsbig" data-count="847">0</span>
-          <span class="vsfoot">45 days<br>logged</span>
-        </div>
-        <div class="vsdiv">vs</div>
-        <div class="vscard chall">
-          <span class="vslabel">Twink SMP</span>
-          <span class="vsbig" data-count="8">0</span>
-          <span class="vsfoot">25 minutes<br>logged</span>
-        </div>
+      <div class="eyebrow">Meanwhile, next door</div>
+      <div class="headline" style="font-size:30px">FF SMP</div>
+      <div class="statrow">
+        <div class="statbox"><span class="sv" data-count="2653">0</span><span class="sl">messages</span></div>
+        <div class="statbox"><span class="sv" data-count="19">0</span><span class="sl">members</span></div>
+        <div class="statbox"><span class="sv" data-count="24">0</span><span class="sl">channels</span></div>
       </div>
-      <div class="sub">Twink SMP has been alive for weeks — the bot only turned up <b>today.</b> That 8 is a head start it never got.</div>
-      <div class="pill"><span class="dot"></span>ask again next week</div>
+      <div class="sub" style="margin-top:14px">In <b>nine days</b> it has out-talked everything the Circus managed in three months. Eleven of Twink's crowd walked straight over.</div>
     </div>
 
     <div class="scene" data-index="8">
+      <div class="act">Act VIII</div>
+      <div class="eyebrow">The one who never left</div>
+      <div class="headline" style="font-size:28px">monoplast</div>
+      <div class="board" style="margin-top:16px">
+        <div class="brow lead" style="padding-left:2px">
+          <span class="bname" style="width:74px">Twink SMP</span>
+          <span class="btrack"><i data-grow-w="100"></i></span>
+          <span class="bnum" style="width:36px" data-count="1009">0</span>
+        </div>
+        <div class="brow" style="padding-left:2px">
+          <span class="bname" style="width:74px">FF SMP</span>
+          <span class="btrack"><i data-grow-w="50"></i></span>
+          <span class="bnum" style="width:36px" data-count="501">0</span>
+        </div>
+      </div>
+      <div class="sub">Loudest voice in a server that died, loudest survivor of the one that replaced it. Justi did it too — <b>590, then 424.</b></div>
+    </div>
+
+    <div class="scene" data-index="9">
       <div class="eyebrow">Curtain call</div>
-      <div class="brandmark" style="font-size:26px">A THREAD → A CHANNEL → A SERVER</div>
+      <div class="brandmark" style="font-size:24px">THE CIRCUS → TWINK SMP → FF SMP</div>
       <div class="ornament">✦ ✦ ✦</div>
-      <div class="sub" style="margin-top:14px">One Saturday in July did all of this.<br>The circus didn't shrink. It moved.</div>
+      <div class="sub" style="margin-top:14px">Three tents in three months.<br>The crowd never shrank — <b>it just kept moving.</b></div>
       <button class="replaybtn" id="replayBtn">Encore</button>
     </div>
 
@@ -229,7 +261,7 @@ body{margin:0;background:#0e0820;font-family:'Nunito',sans-serif;-webkit-font-sm
 
 <script>
 (function(){
-  const DURATIONS = [4000, 4800, 5200, 6400, 4800, 5600, 5400, 6200, 7000];
+  const DURATIONS = [4200, 5000, 6000, 5000, 5600, 6200, 5200, 6000, 6200, 7000];
   const COLORS = ['#ff6fa5', '#ffd166', '#4de3c0', '#8f6bff'];
 
   const stage = document.getElementById('stage');

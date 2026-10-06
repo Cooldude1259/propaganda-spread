@@ -25,12 +25,49 @@
       "name": "Alex R",
       "avatar": "https://cdn.discordapp.com/avatars/1455392169006334063/231714f766bcdf6070d324ea69ef7e0b.png?size=1024"
     },
-    "903834956147597395": { "name": "Jude", "display_name": "Jude (EN GloinkQueen)" },
-    "1363425718565863515": { "name": "That Duck Guy" },
-    "1466328218675056742": { "name": "Louis", "display_name": "Louis (◉SNAKEFRIES◉)" },
-    "1471760080650109033": { "name": "Andy", "display_name": "Andy e.g Roblox kid" },
-    "1234778227675889684": { "name": "Elliot", "display_name": "Elliot ( A BEAN)" },
-    "1514156781637468174": { "name": "monoplast", "note": "Twink SMP member" }
+    "903834956147597395": {
+      "name": "Jude",
+      "display_name": "Jude (EN GloinkQueen)"
+    },
+    "1363425718565863515": {
+      "name": "That Duck Guy"
+    },
+    "1466328218675056742": {
+      "name": "Louis",
+      "display_name": "Louis (◉SNAKEFRIES◉)"
+    },
+    "1471760080650109033": {
+      "name": "Andy",
+      "display_name": "Andy e.g Roblox kid"
+    },
+    "1234778227675889684": {
+      "name": "Elliot",
+      "display_name": "Elliot ( A BEAN)"
+    },
+    "1514156781637468174": {
+      "name": "monoplast",
+      "note": "Twink SMP member"
+    },
+    "1393423040280527042": {
+      "name": null,
+      "note": "UNKNOWN - needs lookup"
+    },
+    "1057148988672979015": {
+      "name": null,
+      "note": "UNKNOWN - needs lookup"
+    },
+    "1347762481367351337": {
+      "name": null,
+      "note": "UNKNOWN - needs lookup"
+    },
+    "1348039368144584724": {
+      "name": null,
+      "note": "UNKNOWN - needs lookup"
+    },
+    "1461657232415396033": {
+      "name": null,
+      "note": "UNKNOWN - needs lookup"
+    }
   },
   "channels": {
     "1467064096238080001": "Rules channel",
@@ -65,6 +102,11 @@
   },
   "guilds": {
     "1467062175494443245": "The Amazing Digital Circus",
-    "1530474340565651566": "Twink SMP"
+    "1530474340565651566": "Twink SMP (Minecraft server retired 30 Sep 2026; will not return)",
+    "1475772793290227784": "FF SMP (successor, started by a friend; bot added 28 Sep 2026)"
+  },
+  "_notes": {
+    "bot_downtime": "No data logged 20-27 Sep 2026 across all guilds - this is logger downtime, NOT server silence. Also 30-31 Aug and 15/17 Sep.",
+    "real_silence": "22 Jul - 19 Aug 2026 in the Circus was genuine silence (crowd moved to Twink SMP), confirmed by Lucas."
   }
 }
