@@ -25,12 +25,44 @@
       "name": "Alex R",
       "avatar": "https://cdn.discordapp.com/avatars/1455392169006334063/231714f766bcdf6070d324ea69ef7e0b.png?size=1024"
     },
-    "903834956147597395": { "name": "Jude", "display_name": "Jude (EN GloinkQueen)" },
-    "1363425718565863515": { "name": "That Duck Guy" },
-    "1466328218675056742": { "name": "Louis", "display_name": "Louis (◉SNAKEFRIES◉)" },
-    "1471760080650109033": { "name": "Andy", "display_name": "Andy e.g Roblox kid" },
-    "1234778227675889684": { "name": "Elliot", "display_name": "Elliot ( A BEAN)" },
-    "1514156781637468174": { "name": "monoplast", "note": "Twink SMP member" }
+    "903834956147597395": {
+      "name": "Jude",
+      "display_name": "Jude (EN GloinkQueen)"
+    },
+    "1363425718565863515": {
+      "name": "That Duck Guy"
+    },
+    "1466328218675056742": {
+      "name": "Louis",
+      "display_name": "Louis (◉SNAKEFRIES◉)"
+    },
+    "1471760080650109033": {
+      "name": "Andy",
+      "display_name": "Andy e.g Roblox kid"
+    },
+    "1234778227675889684": {
+      "name": "Elliot",
+      "display_name": "Elliot ( A BEAN)"
+    },
+    "1514156781637468174": {
+      "name": "monoplast",
+      "note": "Twink SMP member"
+    },
+    "1393423040280527042": {
+      "name": "Pink Diamond"
+    },
+    "1057148988672979015": {
+      "name": "The Rat King"
+    },
+    "1347762481367351337": {
+      "name": "Pan British"
+    },
+    "1348039368144584724": {
+      "name": "Kurrox"
+    },
+    "1461657232415396033": {
+      "name": "Pablo Jamal"
+    }
   },
   "channels": {
     "1467064096238080001": "Rules channel",
@@ -61,10 +93,39 @@
     "1527981215808749649": "minecraft",
     "1527992839391281243": "minecraft-server",
     "1527974859743952956": "(unnamed thread, Jul 18)",
-    "1530474341739925516": "general (Twink SMP)"
+    "1530474341739925516": "general (Twink SMP)",
+    "1475772794112577618": "general (FF SMP)",
+    "1546366300110983208": "links-and-media (FF SMP)",
+    "1555189127459119215": "bagel (FF SMP)",
+    "1546429441880887296": "urban-exploration (FF SMP)",
+    "1546366318205206588": "art (FF SMP)",
+    "1546366025782796318": "announcements (FF SMP)",
+    "1548316274184949792": "General2 voice (FF SMP)",
+    "1546366407829364806": "screenshots (FF SMP)",
+    "1553344332541730886": "music (FF SMP)",
+    "1555187655812063353": "unnamed thread (FF SMP)",
+    "1475772794112577619": "General voice (FF SMP)",
+    "1546366493825175553": "server-status (FF SMP)",
+    "1553734591565537320": "whitelist (FF SMP)",
+    "1556492644568268871": "New Mods for the server, thread (FF SMP)",
+    "1534153198032523324": "Chilling voice (Twink SMP)",
+    "1543577492172963872": "😤-arguments-or-some-shit (Twink SMP)",
+    "1533008067271065790": "Art voice (Twink SMP)",
+    "1531204694037364906": "twinks-and-media (Twink SMP)",
+    "1530474341739925517": "General voice (Twink SMP)",
+    "1530475355096350730": "screenshots (Twink SMP)",
+    "1539802782624911480": "music (Twink SMP)",
+    "1530475574051606642": "memes (Twink SMP)",
+    "1540273019107282974": "unnamed thread (Twink SMP)",
+    "1530495996667363489": "announcements (Twink SMP)"
   },
   "guilds": {
     "1467062175494443245": "The Amazing Digital Circus",
-    "1530474340565651566": "Twink SMP"
+    "1530474340565651566": "Twink SMP (Minecraft server retired 30 Sep 2026; will not return)",
+    "1475772793290227784": "FF SMP (successor, started by a friend; bot added 28 Sep 2026)"
+  },
+  "_notes": {
+    "bot_downtime": "No data logged 20-27 Sep 2026 across all guilds - this is logger downtime, NOT server silence. Also 30-31 Aug and 15/17 Sep.",
+    "real_silence": "22 Jul - 19 Aug 2026 in the Circus was genuine silence (crowd moved to Twink SMP), confirmed by Lucas."
   }
 }
